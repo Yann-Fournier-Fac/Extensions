@@ -1,0 +1,31 @@
+{
+
+    "manifest_version": 2,
+    "name": "Test Extention",
+    "description": "Test de creation d'extention",
+    "version": "0.0.1",
+
+    "browser_action":{
+        "default_popup":"extention.html"
+    },
+
+    "commands": {
+        "_execute_browser_action": {
+            "suggested_key" : {
+                "default": "Ctrl+Shift+F",
+                "mac":"MacCtrl+Shift+F"
+            }
+        }
+    },
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false 
+    },
+    "icons": {
+        "16": "google-chrome.png",
+        "32": "google-chrome.png",
+        "48": "google-chrome.png",
+        "128": "google-chrome.png"
+    }
+
+}
