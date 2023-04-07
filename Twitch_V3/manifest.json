@@ -1,0 +1,23 @@
+{
+    "name": "Ryu Live Alert",
+    "description": "Rejoint moi en live à tout moment !",
+    "version": "0.1",
+    "manifest_version": 3,
+
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action":{
+        "default_popup": "popup.html"
+    },
+    "icons": {
+        "16": "twitch.png",
+        "32": "twitch.png",
+        "48": "twitch.png",
+        "128": "twitch.png"
+    },
+    "permissions":[
+        "alarms",
+        "notifications"
+    ]
+}
