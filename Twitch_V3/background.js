@@ -1,9 +1,11 @@
-const userId = 13123;
-const clientId = '';
-const token = '';
-const url = `https://api/twitch.tv/helix/streams?user_id=${userId}`;
-const twitchURL = '';
-const headers = {
+console.log('hello world !')
+var userId = 27115917;
+var clientId = '09v5b6vch1hsywuyw8j0d5gqxik09j';
+var token = 'bxckld80z22swvrzdfjhny83t2awii';
+
+var url = `https://api/twitch.tv/helix/streams?user_id=${userId}`;
+var twitchURL = '';
+var headers = {
     'Authorization': `Bearer ${token}`,
     'Client-ID': clientId
 }
@@ -39,11 +41,11 @@ function fetchTwitchAPI(url, headers, cb) {
     }).then((json) => cb(json))
 }
 
-function setIcon() {
-    chrome.action.setIcon({ path : path});
-} 
+// function setIcon() {
+//     chrome.action.setIcon({ path : path});
+// } 
 
-fetchTwitchAPI(url, headers, cb) 
+fetchTwitchAPI(url, headers, cb());
 
 chrome.notifications.onClicked.addListener(() => {
     chrome.tabs.create({
@@ -54,5 +56,5 @@ chrome.notifications.onClicked.addListener(() => {
 chrome.alarms.create({ periodInMinutes: 1});
 
 chrome.alarms.onAlarm.addListener(() => {
-    fetchTwitchAPI(url, headers, cb) 
+    fetchTwitchAPI(url, headers, cb());
 });

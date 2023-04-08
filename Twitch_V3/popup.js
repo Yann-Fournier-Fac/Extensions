@@ -1,8 +1,9 @@
-const userId = 13123;
-const clientId = '';
-const token = '';
-const url = `https://api/twitch.tv/helix/streams?user_id=${userId}`;
-const headers = {
+var userId = 27115917;
+var clientId = '09v5b6vch1hsywuyw8j0d5gqxik09j';
+var token = 'bxckld80z22swvrzdfjhny83t2awii';
+
+var url = `https://api/twitch.tv/helix/streams?user_id=${userId}`;
+var headers = {
     'Authorization': `Bearer ${token}`,
     'Client-ID': clientId
 }
@@ -11,20 +12,23 @@ const info = document.getElementById('info');
 
 const cb = function (json) {
     //info.innerHTML = json.data.length ? "Ryu est en live !" : "Ryu n'est pas en train de streamer!";
-    console.log(json.data.length)
+    //console.log(json.data.length)
     if (json.data.length) {
-        info.innerHTML = "Ryu est en live !"
+        info.innerHTML = "Kamet0 est en live !"
     } else {
-        info.innerHTML = "Ryu n'est pas en train de streamer!" 
+        info.innerHTML = "Kamet0 n'est pas en train de streamer!" 
     }
 }
 
-function fetchTwitchAPI(url, headers, cb) {
-    fetch(url, {
-        headers: headers
-    }).then((response) => {
-        return response.json();
-    }).then((json) => cb(json))
+function toJson(response) {
+    return response.json();
 }
 
-fetchTwitchAPI(url, headers, cb) 
+function fetchTwitchAPI(url, headers, cb) {
+    var response =  fetch(url, {headers: headers});
+    //console.log(response)
+    var response2 = toJson(response);
+    cb(response2);
+}
+
+fetchTwitchAPI(url, headers, cb());
