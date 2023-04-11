@@ -1,19 +1,18 @@
-console.log('hello world !')
 var userId = 27115917;
 var clientId = '09v5b6vch1hsywuyw8j0d5gqxik09j';
-var token = 'bxckld80z22swvrzdfjhny83t2awii';
+var token = 'u1336g3trrgsdwayhw33g5g3ik463f';
 
-var url = `https://api/twitch.tv/helix/streams?user_id=${userId}`;
+var url = `https://api.twitch.tv/helix/streams?user_id=${userId}`;
 var twitchURL = '';
-var headers = {
+var header = {
     'Authorization': `Bearer ${token}`,
-    'Client-ID': clientId
+    'Client-Id': clientId
 }
 
 let liveIsOn = false;
 
-const cb = function (json) {
-    console.log(json.data.length)
+function cb(json) {
+    // console.log(json.data.length)
     if (json.data.length && !liveIsOn) {
         // setIcon('twich.png');
         // chrome.notifications.create('LiveOn', {
@@ -23,29 +22,30 @@ const cb = function (json) {
         //     type: 'basic'
         // });
         // liveIsOn = true;
-        chrome.browserAction.setBadgeText({ text: 'ON'});
-        chrome.browserAction.setBadgeBackgroundColor({ color : 'blue'});
+        chrome.action.setBadgeText({ text: "ON"});
+        chrome.action.setBadgeBackgroundColor({ color : "blue"});
     } else {
         // setIcon('twich.png');
         // liveIsOn = false;
-        chrome.browserAction.setBadgeText({ text: 'OFF'});
-        chrome.browserAction.setBadgeBackgroundColor({ color : 'red'});    
+        chrome.action.setBadgeText({ text: "OFF"});
+        chrome.action.setBadgeBackgroundColor({ color : "red"});    
     }
 }
 
-function fetchTwitchAPI(url, headers, cb) {
-    fetch(url, {
-        headers: headers
-    }).then((response) => {
+function fetchTwitchAPI(url) {
+    // console.log(fetch(url, { headers: header }).then((response) => response.json()).then((json) => cb(json)))
+    fetch(url, { 
+        headers: header 
+    }).then((response) =>  {
         return response.json();
-    }).then((json) => cb(json))
+    }).then((json) => cb(json));
 }
 
 // function setIcon() {
 //     chrome.action.setIcon({ path : path});
 // } 
 
-fetchTwitchAPI(url, headers, cb());
+fetchTwitchAPI(url);
 
 chrome.notifications.onClicked.addListener(() => {
     chrome.tabs.create({
@@ -56,5 +56,5 @@ chrome.notifications.onClicked.addListener(() => {
 chrome.alarms.create({ periodInMinutes: 1});
 
 chrome.alarms.onAlarm.addListener(() => {
-    fetchTwitchAPI(url, headers, cb());
+    fetchTwitchAPI(url);
 });
