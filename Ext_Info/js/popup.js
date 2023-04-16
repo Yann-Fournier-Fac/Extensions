@@ -1,21 +1,21 @@
 document.getElementById('stream').addEventListener('click', function() {
-    console.log("Stream");
-    afficheStream();
+    //console.log("Stream");
+    displayDivStream();
 });
 document.getElementById('esport').addEventListener('click', function()  {
-    console.log("Esport");
+    //console.log("Esport");
     afficheEsport();
 });
 document.getElementById('home').addEventListener('click', function() {
-    console.log("Home");
+    //console.log("Home");
     afficheHome();
 });
 document.getElementById('formula1').addEventListener('click', function() {
-    console.log("Formula 1");
+    //console.log("Formula 1");
     afficheFormula1();
 });
 document.getElementById('manga').addEventListener('click', function() {
-    console.log("Manga");
+    //console.log("Manga");
     afficheManga()
 });
 
@@ -32,17 +32,29 @@ boutons[2].style = "background-color: rgba(0, 34, 255, 0.477)";
     boutons[i].style.cssText ="button:hover {background-color: rgba(85, 0, 125, 0.8);}";
 }*/
 
+// Inter div ************************************************************************************************************************************************************
+var divStream = document.createElement('div');
+affiche.appendChild(divStream);
+divStream.style = "display:none;width:330px;height:222px;";
+
+var divEsport = document.createElement('div');
+affiche.appendChild(divEsport);
+divEsport.style = "display:none;width:330px;height:222px;";
+
 var divHome = document.createElement('div');
 affiche.appendChild(divHome);
-divHome.style = "display:block;";
+divHome.style = "display:block;width:330px;height:222px;";
 
+var divFormula1 = document.createElement('div');
+affiche.appendChild(divFormula1);
+divFormula1.style = "display:none;width:330px;height:222px;";
+
+var divManga = document.createElement('div');
+affiche.appendChild(divManga);
+divManga.style = "display:none;width:330px;height:222px;";
 
 
 // Stream ***************************************************************************************************************************************************************
-var divStream = document.createElement('div');
-affiche.appendChild(divStream);
-divStream.style = "display:none;";
-
 let streamersId = {
     "otplol_": 622498423, 
     "Kamet0": 27115917, 
@@ -90,16 +102,19 @@ function getStream(id) {
     fetchTwitchAPI(url)
 }
 
+function Stream() {
+    divStream.innerHTML = "";
+    for (let streamer in streamersId) {
+        getStream(streamersId[streamer]);
+    }
+}
+
 function displayDivStream() {
     divEsport.style = "display:none;";
     divHome.style = "display:none;";
     divFormula1.style = "display:none;";
     divManga.style = "display:none;";
-    divStream.style = "display:block;";
-}
-
-function afficheStream() {
-    displayDivStream();
+    divStream.style = "display:block;width:330px;height:222px;";
     // Changement d'ambiance
     for (let i=0; i<boutons.length; i++) {
         boutons[i].style = "background-color: rgba(85, 0, 125, 0);";
@@ -108,17 +123,15 @@ function afficheStream() {
     boutons[0].style = "background-color: rgba(85, 0, 125, 0.8);";
     corps.style = "background-color: rgb(209, 114, 255);";
     icon.src = "../images/twitch.png";
-
-    for (let streamer in streamersId) {
-        getStream(streamersId[streamer]);
-    }
+    Stream();
 }
 
-// Esport ***************************************************************************************************************************************************************
-var divEsport = document.createElement('div');
-affiche.appendChild(divEsport);
-divEsport.style = "display:none;";
+//afficheStream();
+// appel afficheStream() toutes les minutes
+//chrome.alarms.create({periodInMinutes: 1});
+//chrome.alarms.onAlarm.addListener(() => {afficheStream();});
 
+// Esport ***************************************************************************************************************************************************************
 //Test
 var esp = document.createElement('p');
 esp.innerHTML="Esport";
@@ -129,7 +142,7 @@ function displayDivEsport() {
     divHome.style = "display:none;";
     divFormula1.style = "display:none;";
     divManga.style = "display:none;";
-    divEsport.style = "display:block;";
+    divEsport.style = "display:block;width:330px;height:222px;";
 }
 
 function afficheEsport() {
@@ -142,7 +155,6 @@ function afficheEsport() {
     boutons[1].style = "background-color: rgba(178, 255, 255, 1);";
     corps.style = "background-color: rgba(0, 34, 255, 0.477);";
     icon.src = "../images/esport.png";
-    affiche.innerHTML = ""
 }
 
 // Home *****************************************************************************************************************************************************************
@@ -156,7 +168,7 @@ function displayDivHome() {
     divEsport.style = "display:none;";
     divFormula1.style = "display:none;";
     divManga.style = "display:none;";
-    divHome.style = "display:block;";
+    divHome.style = "display:block;width:330px;height:222px;";
 }
 
 function afficheHome() {
@@ -169,16 +181,9 @@ function afficheHome() {
     boutons[2].style = "background-color: rgba(0, 34, 255, 0.477);";
     corps.style = "background-color: rgba(178, 255, 255, 1);";
     icon.src = "../images/info.png";
-
-    // Affichage
-    affiche.innerHTML = "";
 }
 
 // Formula 1 ************************************************************************************************************************************************************
-var divFormula1 = document.createElement('div');
-affiche.appendChild(divFormula1);
-divFormula1.style = "display:none;";
-
 //Test
 var form = document.createElement('p');
 form.innerHTML="Formula 1";
@@ -189,7 +194,7 @@ function displayDivFormula1() {
     divEsport.style = "display:none;";
     divHome.style = "display:none;";
     divManga.style = "display:none;";
-    divFormula1.style = "display:block;";
+    divFormula1.style = "display:block;width:330px;height:222px;";
 }
 
 function afficheFormula1() {
@@ -202,14 +207,9 @@ function afficheFormula1() {
     boutons[3].style = "background-color: rgba(255, 0, 0, 0.97);";
     corps.style = "background-color: rgb(255, 112, 112, 1);";
     icon.src = "../images/formula1.png";
-    affiche.innerHTML = ""
 }
 
 // Manga ****************************************************************************************************************************************************************
-var divManga = document.createElement('div');
-affiche.appendChild(divManga);
-divManga.style = "display:none;";
-
 //Test
 var man = document.createElement('p');
 man.innerHTML="Manga";
@@ -220,7 +220,7 @@ function displayDivManga() {
     divEsport.style = "display:none;";
     divHome.style = "display:none;";
     divFormula1.style = "display:none;";
-    divManga.style = "display:block;";
+    divManga.style = "display:block;width:330px;height:222px;";
 }
 
 function afficheManga() {
@@ -233,5 +233,4 @@ function afficheManga() {
     boutons[4].style = "background-color: rgba(255, 0, 255, 1)";
     corps.style = "background-color: rgb(255, 133, 255);";
     icon.src = "../images/manga.png";
-    affiche.innerHTML = ""
 }
