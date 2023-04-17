@@ -58,7 +58,7 @@ divManga.style = "display:none;width:330px;height:222px;";
 let streamersId = {
     "otplol_": 622498423, 
     "Kamet0": 27115917, 
-    "Gotagga": 24147592, 
+    "Gotagga": 24147592,
     "Chipsette_FR": 101049128, 
     "LCK": 124425501,
     "VALORANT": 490592527,
@@ -126,10 +126,15 @@ function displayDivStream() {
     Stream();
 }
 
-//afficheStream();
+//Stream();
 // appel afficheStream() toutes les minutes
-//chrome.alarms.create({periodInMinutes: 1});
-//chrome.alarms.onAlarm.addListener(() => {afficheStream();});
+// const when = 1545696000;
+// const periodInMinutes= 1;
+// chrome.alarms.create("Stream",{
+//     when, 
+//     periodInMinutes
+// });
+// chrome.alarms.onAlarm.addListener(() => {Stream();});
 
 // Esport ***************************************************************************************************************************************************************
 //Test
