@@ -4,19 +4,19 @@ document.getElementById('stream').addEventListener('click', function() {
 });
 document.getElementById('esport').addEventListener('click', function()  {
     //console.log("Esport");
-    afficheEsport();
+    displayDivEsport();
 });
 document.getElementById('home').addEventListener('click', function() {
     //console.log("Home");
-    afficheHome();
+    displayDivHome();
 });
 document.getElementById('formula1').addEventListener('click', function() {
     //console.log("Formula 1");
-    afficheFormula1();
+    displayDivFormula1();
 });
 document.getElementById('manga').addEventListener('click', function() {
     //console.log("Manga");
-    afficheManga()
+    displayDivManga()
 });
 
 
@@ -24,35 +24,33 @@ document.getElementById('manga').addEventListener('click', function() {
 var corps = document.getElementById('bod');
 var icon = document.getElementById('image');
 var affiche = document.getElementById('affichage')
+var recherche = document.getElementById('recherche');
 
 var boutons = document.getElementsByTagName('button')
-//console.log(boutons[1]);
 boutons[2].style = "background-color: rgba(0, 34, 255, 0.477)";
 /*for (let i=0; i<boutons.length; i++) {
     boutons[i].style.cssText ="button:hover {background-color: rgba(85, 0, 125, 0.8);}";
 }*/
 
 // Inter div ************************************************************************************************************************************************************
-var divStream = document.createElement('div');
-affiche.appendChild(divStream);
-divStream.style = "display:none;width:330px;height:222px;";
+var divStream = document.getElementById('divStream');
+var divEsport = document.getElementById('divEsport');
+var divHome = document.getElementById('divHome');
+var divFormula1 = document.getElementById('divFormula1');
+var divManga = document.getElementById('divManga');
 
-var divEsport = document.createElement('div');
-affiche.appendChild(divEsport);
-divEsport.style = "display:none;width:330px;height:222px;";
+// Inter input (recherche)********************************************************************************************************************************************************
+var addStream = document.getElementById('addStream');
+var buAddStream = document.getElementById('buAddStream');
 
-var divHome = document.createElement('div');
-affiche.appendChild(divHome);
-divHome.style = "display:block;width:330px;height:222px;";
+var removeStream = document.getElementById('removeStream')
+var buRemoveStream = document.getElementById('buRemoveStream');
 
-var divFormula1 = document.createElement('div');
-affiche.appendChild(divFormula1);
-divFormula1.style = "display:none;width:330px;height:222px;";
+var year = document.getElementById('year');
+var buYear = document.getElementById('buYear');
 
-var divManga = document.createElement('div');
-affiche.appendChild(divManga);
-divManga.style = "display:none;width:330px;height:222px;";
-
+var titre = document.getElementById('titre');
+var buTitre = document.getElementById('buTitre');
 
 // Stream ***************************************************************************************************************************************************************
 let streamersId = {
@@ -83,9 +81,7 @@ function cb(json) {
         let para = document.createElement('p');
         para.innerHTML = json.data[0].user_name;
         divStream.appendChild(para);
-    } else {
-        console.log('non');
-    }
+    } else {}
 }
 
 function fetchTwitchAPI(url) {
@@ -110,11 +106,19 @@ function Stream() {
 }
 
 function displayDivStream() {
+    // affiche info
     divEsport.style = "display:none;";
     divHome.style = "display:none;";
     divFormula1.style = "display:none;";
     divManga.style = "display:none;";
     divStream.style = "display:block;width:330px;height:222px;";
+
+    // affiche Choice
+    year.style = "display:none;";
+    titre.style = "display:none;";
+    addStream.style = "display:block;";
+    removeStream.style = "display:block;";
+
     // Changement d'ambiance
     for (let i=0; i<boutons.length; i++) {
         boutons[i].style = "background-color: rgba(85, 0, 125, 0);";
@@ -142,16 +146,22 @@ var esp = document.createElement('p');
 esp.innerHTML="Esport";
 divEsport.appendChild(esp);
 
+function Esport() {}
+
 function displayDivEsport() {
+    // affiche info
     divStream.style = "display:none;";
     divHome.style = "display:none;";
     divFormula1.style = "display:none;";
     divManga.style = "display:none;";
     divEsport.style = "display:block;width:330px;height:222px;";
-}
 
-function afficheEsport() {
-    displayDivEsport();
+    // affiche choice
+    addStream.style = "display:none;";
+    removeStream.style = "display:none;";
+    titre.style = "display:none;";
+    year.style = "display:none;";
+
     // Changement d'ambiance
     for (let i=0; i<boutons.length; i++) {
         boutons[i].style = "background-color: rgba(178, 255, 255, 0);";
@@ -160,7 +170,11 @@ function afficheEsport() {
     boutons[1].style = "background-color: rgba(178, 255, 255, 1);";
     corps.style = "background-color: rgba(0, 34, 255, 0.477);";
     icon.src = "../images/esport.png";
+
+    Esport();
 }
+
+
 
 // Home *****************************************************************************************************************************************************************
 //Test
@@ -168,24 +182,33 @@ var home = document.createElement('p');
 home.innerHTML="Home";
 divHome.appendChild(home);
 
+function Home() {}
+
 function displayDivHome() {
+    // Affiche info
     divStream.style = "display:none;";
     divEsport.style = "display:none;";
     divFormula1.style = "display:none;";
     divManga.style = "display:none;";
     divHome.style = "display:block;width:330px;height:222px;";
-}
 
-function afficheHome() {
-    displayDivHome();
+    // affiche choice
+    addStream.style = "display:none;";
+    removeStream.style = "display:none;";
+    titre.style = "display:none;";
+    year.style = "display:none;"; 
+
     // Changement d'ambiance
     for (let i=0; i<boutons.length; i++) {
         boutons[i].style = "background-color: rgba(0, 34, 255, 0);";
+        //boutons[i].classList.add("BoutonInfo")
         boutons[i].style.cssText ="button:hover {background-color: rgba(0, 34, 255, 0.477);}";
     }
     boutons[2].style = "background-color: rgba(0, 34, 255, 0.477);";
     corps.style = "background-color: rgba(178, 255, 255, 1);";
     icon.src = "../images/info.png";
+
+    Home();
 }
 
 // Formula 1 ************************************************************************************************************************************************************
@@ -194,16 +217,22 @@ var form = document.createElement('p');
 form.innerHTML="Formula 1";
 divFormula1.appendChild(form);
 
+function Formula1() {}
+
 function displayDivFormula1() {
+    // affiche info
     divStream.style = "display:none;";
     divEsport.style = "display:none;";
     divHome.style = "display:none;";
     divManga.style = "display:none;";
     divFormula1.style = "display:block;width:330px;height:222px;";
-}
 
-function afficheFormula1() {
-    displayDivFormula1();
+    // affiche choice
+    addStream.style = "display:none;";
+    removeStream.style = "display:none;";
+    titre.style = "display:none;";
+    year.style = "display:block;";
+
     // Changement d'ambiance
     for (let i=0; i<boutons.length; i++) {
         boutons[i].style = "background-color: rgba(0, 34, 255, 0);";
@@ -212,6 +241,8 @@ function afficheFormula1() {
     boutons[3].style = "background-color: rgba(255, 0, 0, 0.97);";
     corps.style = "background-color: rgb(255, 112, 112, 1);";
     icon.src = "../images/formula1.png";
+
+    Formula1();
 }
 
 // Manga ****************************************************************************************************************************************************************
@@ -220,16 +251,22 @@ var man = document.createElement('p');
 man.innerHTML="Manga";
 divManga.appendChild(man);
 
+function Manga() {}
+
 function displayDivManga() {
+    // affiche info
     divStream.style = "display:none;";
     divEsport.style = "display:none;";
     divHome.style = "display:none;";
     divFormula1.style = "display:none;";
     divManga.style = "display:block;width:330px;height:222px;";
-}
 
-function afficheManga() {
-    displayDivManga();
+    // affiche choice
+    addStream.style = "display:none;";
+    removeStream.style = "display:none;";
+    year.style = "display:none;";
+    titre.style = "display:block;";
+
     // Changement d'ambiance
     for (let i=0; i<boutons.length; i++) {
         boutons[i].style = "background-color: rgba(255, 0, 255, 0);";
@@ -238,4 +275,7 @@ function afficheManga() {
     boutons[4].style = "background-color: rgba(255, 0, 255, 1)";
     corps.style = "background-color: rgb(255, 133, 255);";
     icon.src = "../images/manga.png";
+
+    Manga();
 }
+
