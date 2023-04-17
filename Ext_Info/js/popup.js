@@ -2,6 +2,12 @@ document.getElementById('stream').addEventListener('click', function() {
     //console.log("Stream");
     displayDivStream();
 });
+document.getElementById('buAddStream').addEventListener('click', function() {
+    addStreamer();
+})
+document.getElementById('buRemoveStream').addEventListener('click', function() {
+    removeStreamer();
+})
 document.getElementById('esport').addEventListener('click', function()  {
     //console.log("Esport");
     displayDivEsport();
@@ -26,11 +32,18 @@ var icon = document.getElementById('image');
 var affiche = document.getElementById('affichage')
 var recherche = document.getElementById('recherche');
 
-var boutons = document.getElementsByTagName('button')
+var boutons = [];
+boutons.push(document.getElementById('stream'));
+boutons.push(document.getElementById('esport'));
+boutons.push(document.getElementById('home'));
+boutons.push(document.getElementById('formula1'));
+boutons.push(document.getElementById('manga'));
+
+for (let i=0; i<boutons.length; i++) {
+    boutons[i].style = "background-color: rgba(0, 34, 255, 0);";
+    boutons[i].classList.add("buhome");
+}
 boutons[2].style = "background-color: rgba(0, 34, 255, 0.477)";
-/*for (let i=0; i<boutons.length; i++) {
-    boutons[i].style.cssText ="button:hover {background-color: rgba(85, 0, 125, 0.8);}";
-}*/
 
 // Inter div ************************************************************************************************************************************************************
 var divStream = document.getElementById('divStream');
@@ -42,8 +55,6 @@ var divManga = document.getElementById('divManga');
 // Inter input (recherche)********************************************************************************************************************************************************
 var addStream = document.getElementById('addStream');
 var buAddStream = document.getElementById('buAddStream');
-
-var removeStream = document.getElementById('removeStream')
 var buRemoveStream = document.getElementById('buRemoveStream');
 
 var year = document.getElementById('year');
@@ -79,9 +90,25 @@ var header = {
 
 function cb(json) {
     if (json.data.length) {
-        let para = document.createElement('p');
-        para.innerHTML = json.data[0].user_name;
-        divStream.appendChild(para);
+        var division = document.createElement('div');
+        division.style = "display: flex;border-top:1px; border-top-style:solid; width:430px;justify-content: center;";
+
+        /*var thumbnail = document.createElement('img');
+        thumbnail.src = json.data[0].thumbnail_url;
+        thumbnail.style = "display: flex; radius:50%;";*/
+
+        var name = document.createElement('p');
+        name.innerHTML = json.data[0].user_name + ":";
+        name.style = "display: inline;font-family: 'Dongle', sans-serif;font-size: 25px;font-weight: 400; margin-right:5px;";
+
+        var titre = document.createElement('p');
+        titre.innerHTML = json.data[0].title;
+        titre.style = "display: inline;font-family: 'Dongle', sans-serif;font-size: 25px;font-weight: 400;font-style: italic;";
+
+        //division.appendChild(thumbnail);
+        division.appendChild(name);
+        division.appendChild(titre);
+        divStream.appendChild(division);
     } else {}
 }
 
@@ -118,17 +145,26 @@ function displayDivStream() {
     year.style = "display:none;";
     titre.style = "display:none;";
     addStream.style = "display:block;";
-    removeStream.style = "display:block;";
 
     // Changement d'ambiance
     for (let i=0; i<boutons.length; i++) {
         boutons[i].style = "background-color: rgba(85, 0, 125, 0);";
-        boutons[i].style.cssText ="button:hover {background-color: rgba(85, 0, 125, 0.8);}";
+        boutons[i].classList = "bustream";
+        //boutons[i].style.cssText ="button:hover {background-color: rgba(85, 0, 125, 0.8);}";
     }
     boutons[0].style = "background-color: rgba(85, 0, 125, 0.8);";
     corps.style = "background-color: rgb(209, 114, 255);";
     icon.src = "../images/twitch.png";
     Stream();
+}
+
+function addStreamer() {
+    console.log("ajout");
+    console.log(document.getElementById("inAddStream").value);
+}
+function removeStreamer() {
+    console.log("retrait");
+    console.log(document.getElementById("inAddStream").value);
 }
 
 //Stream();
@@ -159,14 +195,14 @@ function displayDivEsport() {
 
     // affiche choice
     addStream.style = "display:none;";
-    removeStream.style = "display:none;";
     titre.style = "display:none;";
     year.style = "display:none;";
 
     // Changement d'ambiance
     for (let i=0; i<boutons.length; i++) {
         boutons[i].style = "background-color: rgba(178, 255, 255, 0);";
-        boutons[i].style.cssText ="button:hover {background-color: rgba(178, 255, 255, 1);}";
+        boutons[i].classList = "buesport";
+        //boutons[i].style.cssText ="button:hover {background-color: rgba(178, 255, 255, 1);}";
     }
     boutons[1].style = "background-color: rgba(178, 255, 255, 1);";
     corps.style = "background-color: rgba(0, 34, 255, 0.477);";
@@ -195,15 +231,14 @@ function displayDivHome() {
 
     // affiche choice
     addStream.style = "display:none;";
-    removeStream.style = "display:none;";
     titre.style = "display:none;";
     year.style = "display:none;"; 
 
     // Changement d'ambiance
     for (let i=0; i<boutons.length; i++) {
         boutons[i].style = "background-color: rgba(0, 34, 255, 0);";
-        //boutons[i].classList.add("BoutonInfo")
-        boutons[i].style.cssText ="button:hover {background-color: rgba(0, 34, 255, 0.477);}";
+        boutons[i].classList = "buhome";
+        //boutons[i].style.cssText ="button:hover {background-color: rgba(0, 34, 255, 0.477);}";
     }
     boutons[2].style = "background-color: rgba(0, 34, 255, 0.477);";
     corps.style = "background-color: rgba(178, 255, 255, 1);";
@@ -230,14 +265,14 @@ function displayDivFormula1() {
 
     // affiche choice
     addStream.style = "display:none;";
-    removeStream.style = "display:none;";
     titre.style = "display:none;";
     year.style = "display:block;";
 
     // Changement d'ambiance
     for (let i=0; i<boutons.length; i++) {
         boutons[i].style = "background-color: rgba(0, 34, 255, 0);";
-        boutons[i].style.cssText ="button:hover {background-color: rgba(255, 0, 0, 0.97);}";
+        boutons[i].classList = "buformula1";
+        //boutons[i].style.cssText ="button:hover {background-color: rgba(255, 0, 0, 0.97);}";
     }
     boutons[3].style = "background-color: rgba(255, 0, 0, 0.97);";
     corps.style = "background-color: rgb(255, 112, 112, 1);";
@@ -264,14 +299,14 @@ function displayDivManga() {
 
     // affiche choice
     addStream.style = "display:none;";
-    removeStream.style = "display:none;";
     year.style = "display:none;";
     titre.style = "display:block;";
 
     // Changement d'ambiance
     for (let i=0; i<boutons.length; i++) {
         boutons[i].style = "background-color: rgba(255, 0, 255, 0);";
-        boutons[i].style.cssText ="button:hover {background-color: rgba(255, 0, 255, 1);}";
+        boutons[i].classList = "bumanga";
+        //boutons[i].style.cssText ="button:hover {background-color: rgba(255, 0, 255, 1);}";
     }
     boutons[4].style = "background-color: rgba(255, 0, 255, 1)";
     corps.style = "background-color: rgb(255, 133, 255);";

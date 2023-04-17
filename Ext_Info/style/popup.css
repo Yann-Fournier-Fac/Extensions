@@ -14,7 +14,6 @@ body {
 #image {
     width: 50px;
     height: 50px;
-    
     margin-top: 5px;
     margin-bottom: 5px;
 }
@@ -43,8 +42,65 @@ button {
     transition: background-color 0.15s;
 }
 
-button:hover {
+.bustream {
+    font-family: 'Dongle', sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    background-color: rgba(85, 0, 125, 0);
+    border-style: none;
+    border-radius: 10%;
+    transition: background-color 0.15s;
+}
+.buesport {
+    font-family: 'Dongle', sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    background-color: rgba(178, 255, 255, 0);
+    border-style: none;
+    border-radius: 10%;
+    transition: background-color 0.15s;
+}
+.buhome {
+    font-family: 'Dongle', sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    background-color: rgba(0, 34, 255, 0);
+    border-style: none;
+    border-radius: 10%;
+    transition: background-color 0.15s;
+}
+.buformula1 {
+    font-family: 'Dongle', sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    background-color: rgba(255, 0, 0, 0);
+    border-style: none;
+    border-radius: 10%;
+    transition: background-color 0.15s;
+}
+.bumanga {
+    font-family: 'Dongle', sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    background-color: rgba(255, 0, 255, 0);
+    border-style: none;
+    border-radius: 10%;
+    transition: background-color 0.15s;
+}
+.bustream:hover {
+    background-color: rgba(85, 0, 125, 0.8);
+}
+.buesport:hover {
+    background-color: rgba(178, 255, 255, 1);
+}
+.buhome:hover {
     background-color: rgba(0, 34, 255, 0.477);
+}
+.buformula1:hover {
+    background-color: rgba(255, 0, 0, 0.97);
+}
+.bumanga:hover {
+    background-color: rgba(255, 0, 255, 1);
 }
 
 .BoutonInfo {
@@ -105,14 +161,66 @@ button:hover {
 
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 
 #addStream {
     display: none;
+    height: 30px;
+
 }
 
-#removeStream {
-    display: none;
+#buAddStream {
+    height: 30px;
+    width: 30px;
+    padding: 0%;
+}
+
+#inAddStream {
+    height: 30px;
+    width: 150px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: 'Dongle', sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    background-color: rgb(139, 36, 187);
+    border-style: none;
+    transition: background-color 0.15s;
+}
+
+#inAddStream::placeholder{
+    font-family: 'Dongle', sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    color: black;
+    align-self: center;
+}
+
+
+#inAddStream::selection {
+    border: 10px;
+}
+
+#buRemoveStream {
+    height: 30px;
+    width: 30px;
+    padding: 0%;
+    align-items: normal;
+}
+
+#ajout {
+    height: 30px;
+    width: 30px;
+}
+
+#retrait {
+    height: 30px;
+    width: 30px;
+}
+
+#validation:hover {
+    background-color: rgba(28, 241, 82, 0.477);
 }
 
 #year {
