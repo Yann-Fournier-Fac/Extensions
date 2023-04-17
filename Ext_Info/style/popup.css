@@ -23,6 +23,8 @@ body {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
+    height: 477px;
+    width: 450px;
 }
 
 #bouton {
@@ -45,8 +47,78 @@ button:hover {
     background-color: rgba(0, 34, 255, 0.477);
 }
 
+.BoutonInfo {
+    font-family: 'Dongle', sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    background-color: rgba(0, 34, 255, 0);
+    border-style: none;
+    border-radius: 10%;
+    transition: background-color 0.15s; 
+}
+.BoutonInfo:hover {
+    background-color: rgba(255, 0, 0, 0.477); 
+}
+
 #affichage {
-    width: 330px;
-    height:222px;
+    width: 430px;
+    height:360px;
     padding: 10px;
+}
+
+#divStream {
+    display:none;
+    width:330px;
+    height:222px;
+}
+
+#divEsport{
+    display:none;
+    width:330px;
+    height:222px;
+}
+
+
+#divHome {
+    display:block;
+    width:330px;
+    height:222px;
+}
+
+#divFormula1 {
+    display:none;
+    width:330px;
+    height:222px;
+}
+
+#divManga {
+    display:none;
+    width:330px;
+    height:222px;
+}
+
+
+#recherche {
+    padding: 5px;
+    width: 440px;
+    height: 40px;
+
+    display: flex;
+    flex-direction: row;
+}
+
+#addStream {
+    display: none;
+}
+
+#removeStream {
+    display: none;
+}
+
+#year {
+    display: none;
+}
+
+#titre {
+    display: none;
 }
