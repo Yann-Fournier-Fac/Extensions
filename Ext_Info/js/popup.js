@@ -66,7 +66,8 @@ let streamersId = {
     "RocketBaguette": 139027213,
     "jbzzed": 114497555,
     "Rasmelthor": 97189013,
-    "AzleTV": 31832587
+    "AzleTV": 31832587,
+    "Pokémon": 36653045
 };
 var clientId = '09v5b6vch1hsywuyw8j0d5gqxik09j';
 var token = 'u1336g3trrgsdwayhw33g5g3ik463f';
@@ -83,9 +84,7 @@ function cb(json) {
         let para = document.createElement('p');
         para.innerHTML = json.data[0].user_name;
         divStream.appendChild(para);
-    } else {
-        console.log('non');
-    }
+    } else {}
 }
 
 function fetchTwitchAPI(url) {
