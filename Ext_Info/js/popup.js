@@ -78,6 +78,25 @@ let streamersId = {
     "AzleTV": 31832587,
     "Pokémon": 36653045
 };
+
+//const { readFile } = require('node:fs/promises');
+//const { resolve } = require('node:path');
+//async function logFile() {
+//    try {
+//       const filePath = resolve('../stream.json');
+//        const contents = await readFile(filePath, { encoding: 'utf8'});
+//        console.log(contents);
+//    } catch (err) {
+//        console.error(err.message);
+//    }
+//}
+
+//logFile();
+
+//let fichier = fs.readFileSync("../stream.json");
+//let stream = fichier.parse(fichier);
+//console.log(stream);
+
 var clientId = '09v5b6vch1hsywuyw8j0d5gqxik09j';
 var token = 'u1336g3trrgsdwayhw33g5g3ik463f';
 
