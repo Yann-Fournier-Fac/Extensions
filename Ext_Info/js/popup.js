@@ -64,10 +64,10 @@ var titre = document.getElementById('titre');
 var buTitre = document.getElementById('buTitre');
 
 // Stream ***************************************************************************************************************************************************************
-let streamersId = {
+/*let streamersId = {
     "otplol_": 622498423, 
     "Kamet0": 27115917, 
-    "Gotagga": 24147592,
+    "Gotaga": 24147592,
     "Chipsette_FR": 101049128, 
     "LCK": 124425501,
     "VALORANT": 490592527,
@@ -77,30 +77,10 @@ let streamersId = {
     "Rasmelthor": 97189013,
     "AzleTV": 31832587,
     "Pokémon": 36653045
-};
-
-//const { readFile } = require('node:fs/promises');
-//const { resolve } = require('node:path');
-//async function logFile() {
-//    try {
-//       const filePath = resolve('../stream.json');
-//        const contents = await readFile(filePath, { encoding: 'utf8'});
-//        console.log(contents);
-//    } catch (err) {
-//        console.error(err.message);
-//    }
-//}
-
-//logFile();
-
-//let fichier = fs.readFileSync("../stream.json");
-//let stream = fichier.parse(fichier);
-//console.log(stream);
+};*/
 
 var clientId = '09v5b6vch1hsywuyw8j0d5gqxik09j';
 var token = 'u1336g3trrgsdwayhw33g5g3ik463f';
-
-
 var twitchURL = '';
 var header = {
     'Authorization': `Bearer ${token}`,
@@ -113,7 +93,7 @@ function cb(json) {
         division.style = "display: flex;border-top:1px; border-top-style:solid; width:430px;justify-content: center;";
 
         /*var thumbnail = document.createElement('img');
-        thumbnail.src = json.data[0].thumbnail_url;
+        thumbnail.src = json2.Streamer[0].img;
         thumbnail.style = "display: flex; radius:50%;";*/
 
         var name = document.createElement('p');
@@ -131,6 +111,7 @@ function cb(json) {
     } else {}
 }
 
+
 function fetchTwitchAPI(url) {
     // console.log(fetch(url, { headers: header }).then((response) => response.json()).then((json) => cb(json)))
     fetch(url, { 
@@ -142,15 +123,27 @@ function fetchTwitchAPI(url) {
 
 function getStream(id) {
     var url = `https://api.twitch.tv/helix/streams?user_id=${id}`;
-    fetchTwitchAPI(url)
+    fetchTwitchAPI(url);
 }
 
-function Stream() {
+function Stream(streamersId) {
     divStream.innerHTML = "";
-    for (let streamer in streamersId) {
-        getStream(streamersId[streamer]);
+    console.log()
+    for (let i=0; i < streamersId.Streamer.length; i++) {
+        getStream(streamersId.Streamer[i].user_id);
     }
 }
+
+fetch('../json/stream.json')
+.then((response) => {
+    return response.json();
+})
+.then((jsondata) => {
+    //cb2(jsondata)
+    //streamersId = jsondata;
+    console.log(jsondata)
+    Stream(jsondata);
+});
 
 function displayDivStream() {
     // affiche info
@@ -174,7 +167,6 @@ function displayDivStream() {
     boutons[0].style = "background-color: rgba(85, 0, 125, 0.8);";
     corps.style = "background-color: rgb(209, 114, 255);";
     icon.src = "../images/twitch.png";
-    Stream();
 }
 
 function addStreamer() {
