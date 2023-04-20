@@ -88,6 +88,10 @@ function Stream(streamersId) {
         getStream(streamersId.Streamer[i].user_id);
     }
 }
+var Truc ;
+function settruc(truc){
+    Truc = truc;
+}
 
 fetch('../json/stream.json')
 .then((response) => {
@@ -97,8 +101,19 @@ fetch('../json/stream.json')
     //cb2(jsondata)
     //streamersId = jsondata;
     //console.log(jsondata)
+    settruc(jsondata)
     Stream(jsondata);
 });
+
+
+console.log(Truc)
+//console.log(truc)
+var resp = fetch('../json/stream.json');
+console.log(resp);
+//var resp2 = resp.json();
+//console.log(resp2);
+
+
 
 function displayDivStream() {
     // affiche info
