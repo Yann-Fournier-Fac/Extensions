@@ -28,7 +28,9 @@ document.getElementById('manga').addEventListener('click', function() {
 
 
 var corps = document.getElementById('bod');
+var logo = document.getElementById('logo');
 var icon = document.getElementById('image');
+var buton = document.getElementById('bouton')
 var affiche = document.getElementById('affichage')
 var recherche = document.getElementById('recherche');
 
@@ -90,22 +92,31 @@ var header = {
 function cb(json) {
     if (json.data.length) {
         var division = document.createElement('div');
-        division.style = "display: flex;border-top:1px; border-top-style:solid; width:430px;justify-content: center;";
+        division.style = "border-top:1px; border-top-style:solid; width:430px;text-align: center;";
 
-        /*var thumbnail = document.createElement('img');
-        thumbnail.src = json2.Streamer[0].img;
+        var premierLigne = document.createElement('div');
+        premierLigne.style = "display:flex; justify-content:center; height : 40px;text-align:center";
+
+        var thumbnail = document.createElement('img');
+        //thumbnail.src = "https://static-cdn.jtvnw.net/jtv_user_pictures/787bd9dd-9367-45ed-a44d-d755427549b8-profile_image-70x70.png";
+        //thumbnail.style = "margin-right : 5px;"
+        /*thumbnail.src = json2.Streamer[0].img;
         thumbnail.style = "display: flex; radius:50%;";*/
 
-        var name = document.createElement('p');
+        var name = document.createElement('a');
+        name.href = "https://twitch.tv/" + json.data[0].user_name;
+        name.target = "_blank";
         name.innerHTML = json.data[0].user_name + ":";
-        name.style = "display: inline;font-family: 'Dongle', sans-serif;font-size: 25px;font-weight: 400; margin-right:5px;";
+        name.style = "display: inline;height: 10px; font-family: 'Dongle', sans-serif;font-size: 25px;font-weight: 400; margin-right:5px;";
 
         var titre = document.createElement('p');
         titre.innerHTML = json.data[0].title;
         titre.style = "display: inline;font-family: 'Dongle', sans-serif;font-size: 25px;font-weight: 400;font-style: italic;";
 
         //division.appendChild(thumbnail);
-        division.appendChild(name);
+        premierLigne.appendChild(thumbnail);
+        premierLigne.appendChild(name);
+        division.appendChild(premierLigne);
         division.appendChild(titre);
         divStream.appendChild(division);
     } else {}
@@ -141,7 +152,7 @@ fetch('../json/stream.json')
 .then((jsondata) => {
     //cb2(jsondata)
     //streamersId = jsondata;
-    console.log(jsondata)
+    //console.log(jsondata)
     Stream(jsondata);
 });
 
@@ -156,7 +167,7 @@ function displayDivStream() {
     // affiche Choice
     year.style = "display:none;";
     titre.style = "display:none;";
-    addStream.style = "display:block;";
+    addStream.style = "display:flex;";
 
     // Changement d'ambiance
     for (let i=0; i<boutons.length; i++) {
@@ -165,8 +176,11 @@ function displayDivStream() {
         //boutons[i].style.cssText ="button:hover {background-color: rgba(85, 0, 125, 0.8);}";
     }
     boutons[0].style = "background-color: rgba(85, 0, 125, 0.8);";
-    corps.style = "background-color: rgb(209, 114, 255);";
+    //corps.style = "background-color: rgb(209, 114, 255);";
+    corps.style = "background-color: rgba(255, 255, 255, 1);";
     icon.src = "../images/twitch.png";
+    //logo.style = "background-color: rgb(209, 114, 255);";
+    //buton.style = "background-color: rgb(209, 114, 255);"
 }
 
 function addStreamer() {
@@ -216,7 +230,8 @@ function displayDivEsport() {
         //boutons[i].style.cssText ="button:hover {background-color: rgba(178, 255, 255, 1);}";
     }
     boutons[1].style = "background-color: rgba(178, 255, 255, 1);";
-    corps.style = "background-color: rgba(0, 34, 255, 0.477);";
+    //corps.style = "background-color: rgba(0, 34, 255, 0.477);";
+    corps.style = "background-color: rgba(255, 255, 255, 1);";
     icon.src = "../images/esport.png";
 
     Esport();
@@ -252,7 +267,8 @@ function displayDivHome() {
         //boutons[i].style.cssText ="button:hover {background-color: rgba(0, 34, 255, 0.477);}";
     }
     boutons[2].style = "background-color: rgba(0, 34, 255, 0.477);";
-    corps.style = "background-color: rgba(178, 255, 255, 1);";
+    //corps.style = "background-color: rgba(178, 255, 255, 1);";
+    corps.style = "background-color: rgba(255, 255, 255, 1);";
     icon.src = "../images/info.png";
 
     Home();
@@ -277,7 +293,7 @@ function displayDivFormula1() {
     // affiche choice
     addStream.style = "display:none;";
     titre.style = "display:none;";
-    year.style = "display:block;";
+    year.style = "display:flex;";
 
     // Changement d'ambiance
     for (let i=0; i<boutons.length; i++) {
@@ -286,7 +302,8 @@ function displayDivFormula1() {
         //boutons[i].style.cssText ="button:hover {background-color: rgba(255, 0, 0, 0.97);}";
     }
     boutons[3].style = "background-color: rgba(255, 0, 0, 0.97);";
-    corps.style = "background-color: rgb(255, 112, 112, 1);";
+    //corps.style = "background-color: rgb(255, 112, 112, 1);";
+    corps.style = "background-color: rgba(255, 255, 255, 1);";
     icon.src = "../images/formula1.png";
 
     Formula1();
@@ -311,7 +328,7 @@ function displayDivManga() {
     // affiche choice
     addStream.style = "display:none;";
     year.style = "display:none;";
-    titre.style = "display:block;";
+    titre.style = "display:flex;";
 
     // Changement d'ambiance
     for (let i=0; i<boutons.length; i++) {
@@ -320,7 +337,8 @@ function displayDivManga() {
         //boutons[i].style.cssText ="button:hover {background-color: rgba(255, 0, 255, 1);}";
     }
     boutons[4].style = "background-color: rgba(255, 0, 255, 1)";
-    corps.style = "background-color: rgb(255, 133, 255);";
+    //corps.style = "background-color: rgb(255, 133, 255);";
+    corps.style = "background-color: rgba(255, 255, 255, 1);";
     icon.src = "../images/manga.png";
 
     Manga();

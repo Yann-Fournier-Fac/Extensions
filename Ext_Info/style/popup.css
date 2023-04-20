@@ -1,9 +1,23 @@
 body {
     width: 450px;
     height: 550px;
-    background-color: rgb(178, 255, 255);
+    /*background-color: rgb(178, 255, 255);*/
+    background-color: rgb(255, 255, 255); 
     /*border-style: solid;*/
 }
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    color: black;
+}
+
+a:hover {
+    color: rgb(234, 4, 234);
+}
+
 
 #logo {
     display: flex;
@@ -14,8 +28,8 @@ body {
 #image {
     width: 50px;
     height: 50px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 #info {
@@ -160,7 +174,7 @@ button {
     height: 40px;
 
     display: flex;
-    flex-direction: row;
+    /*flex-direction: row;*/
     justify-content: center;
     z-index: 100;
 }
@@ -168,7 +182,6 @@ button {
 #addStream {
     display: none;
     height: 30px;
-
 }
 
 #buAddStream {
@@ -178,15 +191,16 @@ button {
 }
 
 #inAddStream {
-    height: 30px;
+    height: 40px;
     width: 150px;
-    margin-left: 10px;
+    margin-left: 20px;
     margin-right: 10px;
     font-family: 'Dongle', sans-serif;
     font-size: 25px;
     font-weight: 400;
-    background-color: rgb(139, 36, 187);
+    background-color: rgb(215, 143, 248);
     border-style: none;
+    border-radius: 5px;
     transition: background-color 0.15s;
 }
 
@@ -211,13 +225,13 @@ button {
 }
 
 #ajout {
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
 }
 
 #retrait {
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
 }
 
 #validation:hover {
