@@ -1,0 +1,136 @@
+#recherche {
+    padding: 5px;
+    width: 440px;
+    height: 40px;
+
+    display: flex;
+    /*flex-direction: row;*/
+    justify-content: center;
+    z-index: 100;
+}
+
+/* Stream ***************************************************************************************************/
+#addStream {
+    display: none;
+    height: 30px;
+}
+
+#buAddStream {
+    height: 30px;
+    width: 30px;
+    padding: 0%;
+    transition: all 0.2s;
+}
+
+#buAddStream:hover {
+    transform: scale(120%);
+}
+
+#inAddStream {
+    height: 40px;
+    width: 150px;
+    margin-left: 20px;
+    margin-right: 10px;
+    font-family: 'Dongle', sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    background-color: rgb(215, 143, 248);
+    border-style: none;
+    border-radius: 5px;
+    transition: background-color 0.15s;
+}
+
+#inAddStream::placeholder{
+    font-family: 'Dongle', sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    color: black;
+    align-self: center;
+}
+
+
+#inAddStream::selection {
+    border: 10px;
+}
+
+#buRemoveStream {
+    height: 30px;
+    width: 30px;
+    padding: 0%;
+    align-items: normal;
+    transition: all 0.2s;
+}
+
+#buRemoveStream:hover {
+    transform: scale(120%); 
+}
+
+#ajout {
+    height: 40px;
+    width: 40px;
+}
+
+#retrait {
+    height: 40px;
+    width: 40px;
+}
+
+/* Formula 1 **************************************************************************************************/
+#year {
+    display: none;
+}
+
+#inYear {
+    font-family: 'Dongle', sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    height: 40px;
+    width: 150px;
+    background-color: rgb(255, 86, 86);
+    border-style: none;
+    border-radius: 5px;
+    color: black;
+}
+
+#inYear::placeholder{
+    font-family: 'Dongle', sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    color: black;
+    align-self: center;
+}
+
+#validation {
+    height: 40px;
+    width: 40px;
+    margin-left: 10px;
+    transition: all 0.2s;
+}
+
+#validation:hover {
+    transform: scale(120%);
+}
+/* Manga *********************************************************************************************************************/
+#titre {
+    display: none;
+}
+
+#inTitre {
+    font-family: 'Dongle', sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    height: 40px;
+    width: 150px;
+    background-color: rgb(251, 149, 234);
+    border-style: none;
+    border-radius: 5px;
+    color: black; 
+}
+
+#inTitre::placeholder {
+    font-family: 'Dongle', sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    color: black;
+    align-self: center; 
+}

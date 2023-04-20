@@ -176,8 +176,7 @@ function displayDivStream() {
         //boutons[i].style.cssText ="button:hover {background-color: rgba(85, 0, 125, 0.8);}";
     }
     boutons[0].style = "background-color: rgba(85, 0, 125, 0.8);";
-    //corps.style = "background-color: rgb(209, 114, 255);";
-    corps.style = "background-color: rgba(255, 255, 255, 1);";
+    //corps.style = "background-color: rgba(255, 255, 255, 1);";
     icon.src = "../images/twitch.png";
     //logo.style = "background-color: rgb(209, 114, 255);";
     //buton.style = "background-color: rgb(209, 114, 255);"
@@ -231,7 +230,6 @@ function displayDivEsport() {
     }
     boutons[1].style = "background-color: rgba(178, 255, 255, 1);";
     //corps.style = "background-color: rgba(0, 34, 255, 0.477);";
-    corps.style = "background-color: rgba(255, 255, 255, 1);";
     icon.src = "../images/esport.png";
 
     Esport();
@@ -268,7 +266,6 @@ function displayDivHome() {
     }
     boutons[2].style = "background-color: rgba(0, 34, 255, 0.477);";
     //corps.style = "background-color: rgba(178, 255, 255, 1);";
-    corps.style = "background-color: rgba(255, 255, 255, 1);";
     icon.src = "../images/info.png";
 
     Home();
@@ -303,7 +300,6 @@ function displayDivFormula1() {
     }
     boutons[3].style = "background-color: rgba(255, 0, 0, 0.97);";
     //corps.style = "background-color: rgb(255, 112, 112, 1);";
-    corps.style = "background-color: rgba(255, 255, 255, 1);";
     icon.src = "../images/formula1.png";
 
     Formula1();
@@ -338,7 +334,6 @@ function displayDivManga() {
     }
     boutons[4].style = "background-color: rgba(255, 0, 255, 1)";
     //corps.style = "background-color: rgb(255, 133, 255);";
-    corps.style = "background-color: rgba(255, 255, 255, 1);";
     icon.src = "../images/manga.png";
 
     Manga();

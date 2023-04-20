@@ -1,0 +1,36 @@
+#affichage {
+    width: 430px;
+    height:360px;
+    padding: 10px;
+}
+
+#divStream {
+    display:none;
+    width:330px;
+    height:222px;
+}
+
+#divEsport{
+    display:none;
+    width:330px;
+    height:222px;
+}
+
+
+#divHome {
+    display:block;
+    width:330px;
+    height:222px;
+}
+
+#divFormula1 {
+    display:none;
+    width:330px;
+    height:222px;
+}
+
+#divManga {
+    display:none;
+    width:330px;
+    height:222px;
+}
