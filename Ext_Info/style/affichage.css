@@ -10,6 +10,10 @@
     height:222px;
 }
 
+#findResearch {
+    display: none;
+}
+
 #divEsport{
     display:none;
     width:330px;
