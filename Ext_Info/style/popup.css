@@ -6,20 +6,6 @@ body {
     /*border-style: solid;*/
 }
 
-a:link {
-    text-decoration: none;
-    color: black
-}
-
-a:visited {
-    color: black;
-}
-
-a:hover {
-    color: rgb(234, 4, 234);
-}
-
-
 #logo {
     display: flex;
     flex-direction: row;
@@ -131,5 +117,90 @@ button {
     background-color: rgba(255, 0, 0, 0.477); 
 }
 
+/* Stream ******************************************************************************************************************/
+.linkStream {
+    display: inline;
+    height: 10px; 
+    font-family: 'Dongle', sans-serif;
+    font-size: 25px;
+    font-weight: 400; 
+    margin-right:5px;
+}
 
+.linkStream:link {
+    text-decoration: none;
+    color: black
+}
+
+.linkStream:visited {
+    color: black;
+}
+
+.linkStream:hover {
+    color: rgb(234, 4, 234);
+}
+
+
+/* Home ******************************************************************************************************************/
+#divHome {
+    display: flex;
+    /*flex-direction: column;*/
+    vertical-align: middle;
+    justify-content: center;
+    /* background-color: rgba(0, 34, 255, 0.477); */
+}
+
+.divisionFav {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between; 
+    margin-top: 5px; 
+    margin-bottom: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius:5px; 
+    width:400px;
+    vertical-align:middle;
+    padding-top: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+    /* background-color: rgba(255, 255, 255, 1); */
+}
+
+.divisionFav:hover {
+    /* background-color: rgba(0, 34, 255, 0.477); */
+    border-style: solid;
+    margin-top: 3px; 
+    margin-bottom: 3px;
+    margin-left: 13px;
+    margin-right: 13px;
+    border-width: 2px;
+} 
+
+.linkHome {
+    height: 10px; 
+    font-family: 'Dongle', sans-serif;
+    font-size: 25px;
+    font-weight: 400; 
+    margin-right:5px;
+}
+
+.linkHome:link {
+    text-decoration: none;
+    color: black
+}
+
+.linkHome:visited {
+    color: black;
+}
+
+.linkHome:hover {
+    color: rgba(0, 34, 255, 0.477);
+}
+
+.buDeleteFav {
+    margin: 0px;
+    padding: 0px;
+    vertical-align: middle;
+}
 

@@ -50,8 +50,8 @@ function cb(json) {
         var name = document.createElement('a');
         name.href = "https://twitch.tv/" + json.data[0].user_name;
         name.target = "_blank";
+        name.classList = 'linkStream'
         name.innerHTML = json.data[0].user_name + ":";
-        name.style = "display: inline;height: 10px; font-family: 'Dongle', sans-serif;font-size: 25px;font-weight: 400; margin-right:5px;";
 
         var titre = document.createElement('p');
         titre.innerHTML = json.data[0].title;

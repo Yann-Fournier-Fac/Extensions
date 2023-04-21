@@ -23,15 +23,10 @@ document.getElementById('buQuiteFav').addEventListener('click', function() {
 
 
 // Home *****************************************************************************************************************************************************************
-//Test
-// var home = document.createElement('p');
-// home.innerHTML="Home";
-// divHome.appendChild(home);
 let favoris = [];
 const savedFavoris = JSON.parse(localStorage.getItem('favoris'));
 if (Array.isArray(savedFavoris)) {
     favoris = savedFavoris;
-    //favoris = [];
 } else {
     favoris = [];
 }
@@ -45,28 +40,29 @@ function renderHome() {
 
     favoris.forEach(function (elm) {
         const division = document.createElement('div');
-        division.style = 'display: flex; flex-direction: row; justify-content: space-between; background-color: rgba(0, 34, 255, 0.477); margin-top: 5px; margin-bottom: 5px; border-radius:5px; width:330px;vertical-align:middle;';
+    division.classList = "divisionFav";
 
         const image =   document.createElement('img');
         if(elm.Image.length !== 0) {
             image.src = elm.Image;
+            image.style = "width: 30px; height:30px;"
             division.appendChild(image);
         }
 
         const nom = document.createElement('a');
         nom.href = elm.Url;
         nom.target = "_blank";
-        //nom.style = 'display: inline;'
+        nom.classList = 'linkHome';
         nom.innerHTML = elm.Nom;
         division.appendChild(nom);
 
         const deletButtom = document.createElement('button');
+        deletButtom.classList = 'buDeleteFav'
         const imgCroix = document.createElement('img');
         imgCroix.classList = 'croixFav';
         imgCroix.src = '../images/croix.png';
         deletButtom.appendChild(imgCroix);
         //deletButtom.innerText = 'Delete';
-        deletButtom.style = 'margin-left: 10px;'
         deletButtom.onclick = deletFavoris;
         deletButtom.id = elm.Id;
         imgCroix.id = elm.Id
