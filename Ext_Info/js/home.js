@@ -36,17 +36,6 @@ if (Array.isArray(savedFavoris)) {
     favoris = [];
 }
 
-function removeFavoris(idToDelete) {
-    favoris = favoris.filter(function (fav) {
-        if (fav.Id == idToDelete) {
-            return false;
-        } else {
-            return true;
-        }
-    });
-    saveFavoris();
-}
-
 function saveFavoris() {
     localStorage.setItem('favoris', JSON.stringify(favoris));
 }
@@ -80,6 +69,8 @@ function renderHome() {
         deletButtom.style = 'margin-left: 10px;'
         deletButtom.onclick = deletFavoris;
         deletButtom.id = elm.Id;
+        imgCroix.id = elm.Id
+        //console.log(deletButtom.id);
         division.appendChild(deletButtom)
 
         divHome.appendChild(division);
@@ -91,6 +82,7 @@ renderHome();
 // faire html en rapport
 function addFavoris() {
     const id = '' + new Date().getTime();
+    //console.log(id);
 
     const inImage = document.getElementById('inImageFav');
     const image = inImage.value;
@@ -109,13 +101,24 @@ function addFavoris() {
 }
 
 function deletFavoris(event) {
-    const deletButtom = event.target;
-    const idToDelete = deletButtom.id;
+    const deleteButtom = event.target;
+    console.log(deleteButtom)
+    const idToDelete = deleteButtom.id;
+    console.log(idToDelete);
     //console.log(idToDelete);
 
-    removeFavoris(idToDelete);
-
+    favoris = favoris.filter(function (fav) {
+        if (fav.Id === idToDelete) {
+            //console.log(fav.id);
+            return false;
+        } else {
+            return true;
+        }
+    });
+    //console.log(favoris);
+    saveFavoris();
     renderHome();
+    //console.log(favoris);
 }
 
 function displayAddMenu() {
