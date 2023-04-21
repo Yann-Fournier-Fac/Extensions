@@ -22,7 +22,7 @@ boutons[2].style = "background-color: rgba(0, 34, 255, 0.477)";
 var divStream = document.getElementById('divStream');
 var findResearch = document.getElementById('findResearch');
 var divEsport = document.getElementById('divEsport');
-var divHome = document.getElementById('divHome');
+
 var divFormula1 = document.getElementById('divFormula1');
 var divManga = document.getElementById('divManga');
 
@@ -30,6 +30,8 @@ var divManga = document.getElementById('divManga');
 var addStream = document.getElementById('addStream');
 var buAddStream = document.getElementById('buAddStream');
 var buRemoveStream = document.getElementById('buRemoveStream');
+
+
 
 var year = document.getElementById('year');
 var buYear = document.getElementById('buYear');

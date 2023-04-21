@@ -23,6 +23,7 @@ function displayDivEsport() {
     addStream.style = "display:none;";
     titre.style = "display:none;";
     year.style = "display:none;";
+    addFav.style = "display:none"
 
     // Changement d'ambiance
     for (let i=0; i<boutons.length; i++) {

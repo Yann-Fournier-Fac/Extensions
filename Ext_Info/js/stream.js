@@ -126,6 +126,7 @@ function displayDivStream() {
     // affiche Choice
     year.style = "display:none;";
     titre.style = "display:none;";
+    addFav.style = "display:none"
     addStream.style = "display:flex;";
 
     // Changement d'ambiance

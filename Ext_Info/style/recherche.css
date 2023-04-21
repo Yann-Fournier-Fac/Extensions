@@ -75,6 +75,31 @@
     width: 40px;
 }
 
+/* Home **************************************************************************************************/
+
+#addFavoris{
+    display: none;
+}
+
+#MenuAddFav{
+    display: none;
+    flex-direction: column;
+    justify-content:space-between;
+   /* we will toggle then the display of the end-menu */
+    margin: 50px auto;
+    width: 200px;
+    padding: 20px;
+    text-align: center;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    z-index: 1000;
+
+}
+
 /* Formula 1 **************************************************************************************************/
 #year {
     display: none;
