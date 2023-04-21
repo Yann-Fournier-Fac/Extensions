@@ -19,7 +19,7 @@
     height: 30px;
     width: 30px;
     padding: 0%;
-    transition: all 0.2s;
+    transition: all 0.1s;
 }
 
 #buAddStream:hover {
@@ -58,7 +58,7 @@
     width: 30px;
     padding: 0%;
     align-items: normal;
-    transition: all 0.2s;
+    transition: all 0.1s;
 }
 
 #buRemoveStream:hover {
@@ -84,7 +84,6 @@
 #MenuAddFav{
     display: none;
     flex-direction: column;
-    justify-content:space-between;
    /* we will toggle then the display of the end-menu */
     margin: 50px auto;
     width: 200px;
@@ -99,6 +98,54 @@
     z-index: 1000;
 
 }
+
+#inImageFav {
+    margin-bottom: 5px;
+}
+
+#inNomFav {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#inUrlFav {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#croix {
+    height: 40px;
+    width: 40px;
+    margin-left: 10px;
+    transition: all 0.1s; 
+}
+
+#croix:hover {
+    background-color: red;
+}
+
+#validationFav {
+    height: 40px;
+    width: 40px;
+    margin-left: 10px;
+    transition: all 0.1s;
+}
+
+#validationFav:hover {
+    transform: scale(120%);
+}
+
+.croixFav {
+    height: 20px;
+    width: 20px;
+    margin-left: 10px;
+    transition: all 0.1s; 
+}
+
+.croixFav:hover {
+    background-color: red;
+}
+
 
 /* Formula 1 **************************************************************************************************/
 #year {
@@ -129,7 +176,7 @@
     height: 40px;
     width: 40px;
     margin-left: 10px;
-    transition: all 0.2s;
+    transition: all 0.1s;
 }
 
 #validation:hover {

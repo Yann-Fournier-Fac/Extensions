@@ -18,6 +18,7 @@ function displayDivManga() {
     divHome.style = "display:none;";
     divFormula1.style = "display:none;";
     divManga.style = "display:block;width:330px;height:222px;";
+    MenuAddFav.style = "display: none;"
 
     // affiche choice
     addStream.style = "display:none;";

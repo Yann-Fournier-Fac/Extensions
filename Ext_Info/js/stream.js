@@ -122,6 +122,7 @@ function displayDivStream() {
     divFormula1.style = "display:none;";
     divManga.style = "display:none;";
     divStream.style = "display:block;width:330px;height:222px;";
+    MenuAddFav.style = "display: none;"
 
     // affiche Choice
     year.style = "display:none;";

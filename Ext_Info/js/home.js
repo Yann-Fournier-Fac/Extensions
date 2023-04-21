@@ -1,3 +1,9 @@
+var divHome = document.getElementById('divHome');
+var addFav = document.getElementById('addFavoris')
+var MenuAddFav = document.getElementById('MenuAddFav');
+
+addFav.style = "display:flex"
+
 document.getElementById('home').addEventListener('click', function() {
     //console.log("Home");
     displayDivHome();
@@ -7,27 +13,31 @@ document.getElementById('buAddFavori').addEventListener('click', function() {
     displayAddMenu();
 })
 
-var divHome = document.getElementById('divHome');
-var addFav = document.getElementById('addFavoris')
-var MenuAddFav = document.getElementById('MenuAddFav');
+document.getElementById('buValFav').addEventListener('click', function() {
+    addFavoris();
+    
+})
+document.getElementById('buQuiteFav').addEventListener('click', function() {
+    MenuAddFav.style = "display:none";
+})
 
-addFav.style = "display:flex"
 
 // Home *****************************************************************************************************************************************************************
 //Test
 // var home = document.createElement('p');
 // home.innerHTML="Home";
 // divHome.appendChild(home);
-let favoris;
+let favoris = [];
 const savedFavoris = JSON.parse(localStorage.getItem('favoris'));
 if (Array.isArray(savedFavoris)) {
     favoris = savedFavoris;
+    //favoris = [];
 } else {
     favoris = [];
 }
 
 function removeFavoris(idToDelete) {
-    favori = favoris.filter(function (fav) {
+    favoris = favoris.filter(function (fav) {
         if (fav.Id == idToDelete) {
             return false;
         } else {
@@ -46,6 +56,8 @@ function renderHome() {
 
     favoris.forEach(function (elm) {
         const division = document.createElement('div');
+        division.style = 'display: flex; flex-direction: row; justify-content: space-between; background-color: rgba(0, 34, 255, 0.477); margin-top: 5px; margin-bottom: 5px; border-radius:5px; width:330px;vertical-align:middle;';
+
         const image =   document.createElement('img');
         if(elm.Image.length !== 0) {
             image.src = elm.Image;
@@ -54,18 +66,23 @@ function renderHome() {
 
         const nom = document.createElement('a');
         nom.href = elm.Url;
+        nom.target = "_blank";
+        //nom.style = 'display: inline;'
         nom.innerHTML = elm.Nom;
         division.appendChild(nom);
 
         const deletButtom = document.createElement('button');
-        deletButtom.innerText = 'Delete';
-        deletButtom.style = 'margin-left: 12px;'
+        const imgCroix = document.createElement('img');
+        imgCroix.classList = 'croixFav';
+        imgCroix.src = '../images/croix.png';
+        deletButtom.appendChild(imgCroix);
+        //deletButtom.innerText = 'Delete';
+        deletButtom.style = 'margin-left: 10px;'
         deletButtom.onclick = deletFavoris;
-        deletButtom.id = todo.id;
+        deletButtom.id = elm.Id;
         division.appendChild(deletButtom)
 
         divHome.appendChild(division);
-              
     });
 }
 
@@ -75,7 +92,7 @@ renderHome();
 function addFavoris() {
     const id = '' + new Date().getTime();
 
-    const inImage = document.getElementById('inImgFav');
+    const inImage = document.getElementById('inImageFav');
     const image = inImage.value;
 
     const inNom = document.getElementById('inNomFav');
@@ -87,7 +104,8 @@ function addFavoris() {
     favoris.push(
         {Id:id, Image:image, Nom:nom, Url:url}
     )
-
+    saveFavoris();
+    renderHome();
 }
 
 function deletFavoris(event) {
@@ -95,7 +113,7 @@ function deletFavoris(event) {
     const idToDelete = deletButtom.id;
     //console.log(idToDelete);
 
-    removeTodo(idToDelete);
+    removeFavoris(idToDelete);
 
     renderHome();
 }
@@ -116,7 +134,7 @@ function displayDivHome() {
     addStream.style = "display:none;";
     titre.style = "display:none;";
     year.style = "display:none;";
-    addFav.style = "display:flex"
+    addFav.style = "display:flex";
 
     // Changement d'ambiance
     for (let i=0; i<boutons.length; i++) {
@@ -127,6 +145,4 @@ function displayDivHome() {
     boutons[2].style = "background-color: rgba(0, 34, 255, 0.477);";
     //corps.style = "background-color: rgba(178, 255, 255, 1);";
     icon.src = "../images/info.png";
-
-    Home();
 }
