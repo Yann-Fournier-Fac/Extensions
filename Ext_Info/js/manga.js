@@ -1,3 +1,8 @@
+var divManga = document.getElementById('divManga');
+
+var titre = document.getElementById('titre');
+var buTitre = document.getElementById('buTitre');
+
 document.getElementById('manga').addEventListener('click', function() {
     //console.log("Manga");
     displayDivManga()

@@ -4,6 +4,14 @@ var MenuAddFav = document.getElementById('MenuAddFav');
 
 addFav.style = "display:flex"
 
+// Mise en forme Home
+for (let i=0; i<boutons.length; i++) {
+    boutons[i].style = "background-color: rgba(0, 34, 255, 0);";
+    boutons[i].classList.add("buhome");
+}
+boutons[2].style = "background-color: rgba(0, 34, 255, 0.477)";
+
+
 document.getElementById('home').addEventListener('click', function() {
     //console.log("Home");
     displayDivHome();
@@ -44,7 +52,7 @@ function renderHome() {
 
         const image =   document.createElement('img');
         if(elm.Image.length !== 0) {
-            image.src = elm.Image;
+            image.src = '../images/' + elm.Image;
             image.style = "width: 30px; height:30px;"
             division.appendChild(image);
         }
@@ -138,7 +146,7 @@ function displayDivHome() {
     // Changement d'ambiance
     for (let i=0; i<boutons.length; i++) {
         boutons[i].style = "background-color: rgba(0, 34, 255, 0);";
-        boutons[i].classList = "buhome";
+        boutons[i].className = 'buhome';
         //boutons[i].style.cssText ="button:hover {background-color: rgba(0, 34, 255, 0.477);}";
     }
     boutons[2].style = "background-color: rgba(0, 34, 255, 0.477);";

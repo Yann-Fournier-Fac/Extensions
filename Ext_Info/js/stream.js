@@ -1,3 +1,11 @@
+var divStream = document.getElementById('divStream');
+var findResearch = document.getElementById('findResearch');
+
+var addStream = document.getElementById('addStream');
+var buAddStream = document.getElementById('buAddStream');
+var buRemoveStream = document.getElementById('buRemoveStream');
+
+
 document.getElementById('stream').addEventListener('click', function() {
     //console.log("Stream");
     displayDivStream();

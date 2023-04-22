@@ -1,3 +1,9 @@
+var divFormula1 = document.getElementById('divFormula1');
+
+var year = document.getElementById('year');
+var buYear = document.getElementById('buYear');
+
+
 document.getElementById('formula1').addEventListener('click', function() {
     //console.log("Formula 1");
     displayDivFormula1();

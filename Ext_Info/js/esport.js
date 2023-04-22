@@ -1,3 +1,6 @@
+var divEsport = document.getElementById('divEsport');
+
+
 document.getElementById('esport').addEventListener('click', function()  {
     //console.log("Esport");
     displayDivEsport();

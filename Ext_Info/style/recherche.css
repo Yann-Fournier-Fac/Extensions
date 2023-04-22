@@ -40,7 +40,11 @@
     background-color: rgb(215, 143, 248);
     border-style: none;
     border-radius: 5px;
-    transition: background-color 0.15s;
+    transition: all 0.1s;
+}
+
+#inAddStream:hover {
+    transform: scale(110%);
 }
 
 #inAddStream::placeholder{
@@ -68,7 +72,7 @@
     transform: scale(120%); 
 }
 
-#ajout {
+#ajoutStream {
     height: 40px;
     width: 40px;
 }
@@ -82,6 +86,16 @@
 
 #addFavoris{
     display: none;
+}
+
+#ajoutFav {
+    height: 40px;
+    width: 40px;
+    transition: all 0.1s;
+}
+
+#ajoutFav:hover {
+    transform: scale(120%);
 }
 
 #MenuAddFav{
@@ -165,6 +179,11 @@
     border-style: none;
     border-radius: 5px;
     color: black;
+    transition: all 0.1s;
+}
+
+#inYear:hover {
+    transform: scale(110%);
 }
 
 #inYear::placeholder{
@@ -174,6 +193,8 @@
     color: black;
     align-self: center;
 }
+
+
 
 #validation {
     height: 40px;
@@ -199,7 +220,12 @@
     background-color: rgb(251, 149, 234);
     border-style: none;
     border-radius: 5px;
-    color: black; 
+    color: black;
+    transition: all 0.1s;
+}
+
+#inTitre:hover {
+    transform: scale(110%);
 }
 
 #inTitre::placeholder {
