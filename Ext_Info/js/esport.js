@@ -1,9 +1,15 @@
 var divEsport = document.getElementById('divEsport');
+var game = document.getElementById('game');
+var inGame = document.getElementById('inGame');
 
 
 document.getElementById('esport').addEventListener('click', function()  {
     //console.log("Esport");
     displayDivEsport();
+});
+
+document.getElementById('buChoseGame').addEventListener('click', function() {
+    console.log(inGame.value);
 });
 
 // Esport ***************************************************************************************************************************************************************
@@ -28,6 +34,7 @@ function displayDivEsport() {
     titre.style = "display:none;";
     year.style = "display:none;";
     addFav.style = "display:none"
+    game.style = 'display:flex;'
 
     // Changement d'ambiance
     for (let i=0; i<boutons.length; i++) {

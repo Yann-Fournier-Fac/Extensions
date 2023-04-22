@@ -9,7 +9,7 @@ for (let i=0; i<boutons.length; i++) {
     boutons[i].style = "background-color: rgba(0, 34, 255, 0);";
     boutons[i].classList.add("buhome");
 }
-boutons[2].style = "background-color: rgba(0, 34, 255, 0.477)";
+boutons[2].style = "background-color: rgba(0, 34, 255, 0.477);";
 
 
 document.getElementById('home').addEventListener('click', function() {
@@ -89,13 +89,28 @@ function addFavoris() {
     //console.log(id);
 
     const inImage = document.getElementById('inImageFav');
-    const image = inImage.value;
+    var image;
+    if (inImage.value.length === 0) {
+        image = 'interrogation.png';
+    } else {
+        image = inImage.value;
+    }
 
     const inNom = document.getElementById('inNomFav');
-    const nom = inNom.value;
+    var nom;
+    if (inNom.value.length === 0) {
+        nom = 'inconnu';
+    } else {
+        nom = inNom.value;
+    }
 
     const inUrl = document.getElementById('inUrlFav');
-    const url = inUrl.value;
+    var url;
+    if (inUrl.value.length === 0) {
+        url = 'https://google.com'
+    } else {
+        url = inUrl.value;
+    }
 
     favoris.push(
         {Id:id, Image:image, Nom:nom, Url:url}
@@ -141,6 +156,7 @@ function displayDivHome() {
     addStream.style = "display:none;";
     titre.style = "display:none;";
     year.style = "display:none;";
+    game.style = 'display:none';
     addFav.style = "display:flex";
 
     // Changement d'ambiance

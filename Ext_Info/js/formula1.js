@@ -2,13 +2,16 @@ var divFormula1 = document.getElementById('divFormula1');
 
 var year = document.getElementById('year');
 var buYear = document.getElementById('buYear');
-
+var inYear = document.getElementById('inYear');
 
 document.getElementById('formula1').addEventListener('click', function() {
     //console.log("Formula 1");
     displayDivFormula1();
 });
 
+document.getElementById('buChoseYear').addEventListener('click', function() {
+    console.log(inYear.value);
+});
 // Formula 1 ************************************************************************************************************************************************************
 //Test
 var form = document.createElement('p');
@@ -29,7 +32,8 @@ function displayDivFormula1() {
     // affiche choice
     addStream.style = "display:none;";
     titre.style = "display:none;";
-    addFav.style = "display:none"
+    addFav.style = "display:none";
+    game.style = 'display:none';
     year.style = "display:flex;";
 
     // Changement d'ambiance

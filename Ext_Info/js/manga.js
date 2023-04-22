@@ -28,7 +28,8 @@ function displayDivManga() {
     // affiche choice
     addStream.style = "display:none;";
     year.style = "display:none;";
-    addFav.style = "display:none"
+    addFav.style = "display:none";
+    game.style = 'display:none';
     titre.style = "display:flex;";
 
     // Changement d'ambiance

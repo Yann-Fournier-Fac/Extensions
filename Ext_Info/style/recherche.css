@@ -82,6 +82,31 @@
     width: 40px;
 }
 
+/* Esport ***************************************************************************************************/
+
+#game {
+    display: none;
+}
+
+#inGame {
+    font-family: 'Dongle', sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    height: 40px;
+    width: 150px;
+    background-color: rgb(205, 255, 255);
+    border-style: none;
+    border-radius: 5px;
+    color: black;
+    transition: all 0.1s;
+    margin-bottom: 5px;
+}
+
+#inGame:hover {
+    transform: scale(110%);
+}
+
+
 /* Home **************************************************************************************************/
 
 #addFavoris{
@@ -104,11 +129,10 @@
    /* we will toggle then the display of the end-menu */
     margin: 50px auto;
     width: 200px;
-    padding: 20px;
     text-align: center;
     background-color: white;
     border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
     position: absolute;
     left: 50%;
     transform: translate(-50%, 50%);
@@ -116,30 +140,81 @@
 
 }
 
-#inImageFav {
-    margin-bottom: 5px;
-}
-
-#inNomFav {
+#boutonCroix {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 10px;
     margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-#inUrlFav {
-    margin-top: 5px;
-    margin-bottom: 30px;
 }
 
 #croix {
-    height: 40px;
-    width: 40px;
-    margin-left: 10px;
+    height: 20px;
+    width: 20px;
+    padding: 5px;
     transition: all 0.1s; 
 }
 
 #croix:hover {
-    background-color: red;
+    background-color: rgb(255, 131, 131);
 }
+
+#inImageFav {
+    font-family: 'Dongle', sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    height: 40px;
+    width: 150px;
+    background-color: rgba(0, 34, 255, 0.477);;
+    border-style: none;
+    border-radius: 5px;
+    color: black;
+    transition: all 0.1s;
+    margin-bottom: 5px;
+}
+
+#inImageFav::placeholder{
+    color: black;
+}
+
+#inNomFav {
+    font-family: 'Dongle', sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    height: 40px;
+    width: 150px;
+    background-color: rgba(0, 34, 255, 0.477);;
+    border-style: none;
+    border-radius: 5px;
+    color: black;
+    transition: all 0.1s;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#inNomFav::placeholder {
+    color: black;
+}
+
+#inUrlFav {
+    font-family: 'Dongle', sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    height: 40px;
+    width: 150px;
+    background-color: rgba(0, 34, 255, 0.477);;
+    border-style: none;
+    border-radius: 5px;
+    color: black;
+    transition: all 0.1s;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+#inUrlFav::placeholder {
+    color: black;
+}
+
+
 
 #validationFav {
     height: 40px;
@@ -156,11 +231,12 @@
     height: 20px;
     width: 20px;
     margin-left: 10px;
-    transition: all 0.1s; 
+    transition: all 0.1s;
+    padding: 5px;
 }
 
 .croixFav:hover {
-    background-color: red;
+    background-color: rgb(255, 131, 131);
 }
 
 
