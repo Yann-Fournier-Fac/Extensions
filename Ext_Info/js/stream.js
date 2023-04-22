@@ -1,5 +1,6 @@
 var divStream = document.getElementById('divStream');
-var findResearch = document.getElementById('findResearch');
+var menuAddStream = document.getElementById('MenuAddStream');
+var menuRemStream = document.getElementById('MenuRemStream');
 
 var addStream = document.getElementById('addStream');
 var buAddStream = document.getElementById('buAddStream');
@@ -10,12 +11,30 @@ document.getElementById('stream').addEventListener('click', function() {
     //console.log("Stream");
     displayDivStream();
 });
+
 document.getElementById('buAddStream').addEventListener('click', function() {
-    addStreamer();
+    menuAddStream.style = 'display:flex;';
 })
+document.getElementById('buVal').addEventListener('click', function() {
+    addStreamer();
+
+})
+document.getElementById('buRes').addEventListener('click', function() {
+    menuAddStream.style = "display:none";
+})
+
+
 document.getElementById('buRemoveStream').addEventListener('click', function() {
+    menuRemStream.style = 'display:flex;';
+})
+document.getElementById('buValRem').addEventListener('click', function() {
     removeStreamer();
 })
+document.getElementById('buResRem').addEventListener('click', function() {
+    menuRemStream.style = 'display:none;';
+})
+
+
 
 // Stream ***************************************************************************************************************************************************************
 /*let streamersId = {
@@ -153,11 +172,9 @@ function displayDivStream() {
 }
 
 function addStreamer() {
-    console.log("ajout");
     console.log(document.getElementById("inAddStream").value);
 }
 function removeStreamer() {
-    console.log("retrait");
     console.log(document.getElementById("inAddStream").value);
 }
 

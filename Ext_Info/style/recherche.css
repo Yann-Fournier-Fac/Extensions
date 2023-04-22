@@ -72,6 +72,79 @@
     transform: scale(120%); 
 }
 
+#MenuAddStream{
+    display: none;
+    flex-direction: column;
+   /* we will toggle then the display of the end-menu */
+    margin: 50px auto;
+    width: 200px;
+    text-align: center;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    z-index: 1000;
+}
+
+#infoStreamerTrouver {
+    color: black;
+}
+
+#buValStream {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#buVal {
+    height: 30px;
+    width: 30px; 
+}
+
+#imgVal {
+    height: 35px;
+    width: 35px;
+    margin-right: 10px;
+    transition: all 0.1s; 
+}
+
+#imgVal:hover {
+    transform: scale(120%);
+}
+
+#imgRes {
+    height: 30px;
+    width: 30px;
+    margin-left: 10px;
+    transition: all 0.1s;
+}
+
+#imgRes:hover {
+    transform: scale(120%);
+}
+
+#MenuRemStream{
+    display: none;
+    flex-direction: column;
+   /* we will toggle then the display of the end-menu */
+    margin: 50px auto;
+    width: 200px;
+    text-align: center;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    z-index: 1000;
+}
+
+#infoStreamerTrouver {
+    color: black;
+}
+
 #ajoutStream {
     height: 40px;
     width: 40px;
