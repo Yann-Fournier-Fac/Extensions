@@ -135,11 +135,13 @@
     background-color: white;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    background-color: rgb(228, 179, 251);
     position: absolute;
     left: 50%;
     transform: translate(-50%, 50%);
     z-index: 1000;
 }
+
 
 #infoStreamerTrouver {
     color: black;
@@ -274,7 +276,7 @@
     font-weight: 400;
     height: 40px;
     width: 150px;
-    background-color: rgba(0, 34, 255, 0.477);;
+    background-color: rgba(0, 34, 255, 0.477);
     border-style: none;
     border-radius: 5px;
     color: black;
@@ -311,6 +313,38 @@
 .croixFav:hover {
     background-color: rgb(255, 131, 131);
 }
+
+#MenuRemFav{
+    display: none;
+    flex-direction: column;
+   /* we will toggle then the display of the end-menu */
+    margin: 50px auto;
+    width: 200px;
+    text-align: center;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    z-index: 1000;
+    background-color: rgb(160, 172, 250);
+}
+
+#question {
+    font-family: 'Dongle', sans-serif;
+    font-size: 25px;
+    font-weight: 400; 
+}
+
+#buRemFavo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+
 
 
 /* Formula 1 **************************************************************************************************/

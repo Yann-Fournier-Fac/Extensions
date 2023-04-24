@@ -1,6 +1,7 @@
 var divHome = document.getElementById('divHome');
 var addFav = document.getElementById('addFavoris')
-var MenuAddFav = document.getElementById('MenuAddFav');
+var menuAddFav = document.getElementById('MenuAddFav');
+var menuRemFav = document.getElementById('MenuRemFav');
 
 addFav.style = "display:flex"
 
@@ -26,8 +27,12 @@ document.getElementById('buValFav').addEventListener('click', function() {
     
 })
 document.getElementById('buQuiteFav').addEventListener('click', function() {
-    MenuAddFav.style = "display:none";
+    menuAddFav.style = "display:none";
 })
+
+document.getElementById('buValRemF').addEventListener('click', function() {
+    // en attente
+});
 
 
 // Home *****************************************************************************************************************************************************************
@@ -119,13 +124,7 @@ function addFavoris() {
     renderHome();
 }
 
-function deletFavoris(event) {
-    const deleteButtom = event.target;
-    console.log(deleteButtom)
-    const idToDelete = deleteButtom.id;
-    console.log(idToDelete);
-    //console.log(idToDelete);
-
+function val(idToDelete) {
     favoris = favoris.filter(function (fav) {
         if (fav.Id === idToDelete) {
             //console.log(fav.id);
@@ -138,6 +137,18 @@ function deletFavoris(event) {
     saveFavoris();
     renderHome();
     //console.log(favoris);
+}
+
+function deletFavoris(event) {
+    const deleteButtom = event.target;
+    console.log(deleteButtom)
+    const idToDelete = deleteButtom.id;
+    console.log(idToDelete);
+    //console.log(idToDelete);
+
+    val(idToDelete);
+
+    
 }
 
 function displayAddMenu() {
