@@ -20,15 +20,15 @@ document.getElementById('home').addEventListener('click', function() {
 
 document.getElementById('buAddFavori').addEventListener('click', function() {
     displayAddMenu();
-})
+});
 
 document.getElementById('buValFav').addEventListener('click', function() {
     addFavoris();
     
-})
+});
 document.getElementById('buQuiteFav').addEventListener('click', function() {
     menuAddFav.style = "display:none";
-})
+});
 
 document.getElementById('buValRemF').addEventListener('click', function() {
     // en attente
@@ -121,6 +121,7 @@ function addFavoris() {
         {Id:id, Image:image, Nom:nom, Url:url}
     )
     saveFavoris();
+    menuAddFav.style = "display:none";
     renderHome();
 }
 

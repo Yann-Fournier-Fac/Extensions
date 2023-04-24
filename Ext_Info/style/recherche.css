@@ -82,6 +82,8 @@
     background-color: white;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    background-color: rgb(228, 179, 251);
+
     position: absolute;
     left: 50%;
     transform: translate(-50%, 50%);
@@ -96,11 +98,13 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    /* margin-top: 10px; */
 }
 
 #buVal {
     height: 30px;
-    width: 30px; 
+    width: 30px;
+    margin-right: 10px;
 }
 
 #imgVal {
@@ -117,12 +121,19 @@
 #imgRes {
     height: 30px;
     width: 30px;
-    margin-left: 10px;
+    margin-left: 20px;
     transition: all 0.1s;
 }
 
 #imgRes:hover {
     transform: scale(120%);
+}
+
+#infoStreamerTrouver {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 #MenuRemStream{
