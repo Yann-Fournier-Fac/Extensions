@@ -3,7 +3,7 @@ var addFav = document.getElementById('addFavoris')
 var menuAddFav = document.getElementById('MenuAddFav');
 var menuRemFav = document.getElementById('MenuRemFav');
 
-addFav.style = "display:flex"
+addFav.style = "display:flex";
 
 // Mise en forme Home
 for (let i=0; i<boutons.length; i++) {
@@ -34,128 +34,6 @@ document.getElementById('buValRemF').addEventListener('click', function() {
     // en attente
 });
 
-
-// Home *****************************************************************************************************************************************************************
-let favoris = [];
-const savedFavoris = JSON.parse(localStorage.getItem('favoris'));
-if (Array.isArray(savedFavoris)) {
-    favoris = savedFavoris;
-} else {
-    favoris = [];
-}
-
-function saveFavoris() {
-    localStorage.setItem('favoris', JSON.stringify(favoris));
-}
-
-function renderHome() {
-    document.getElementById('divHome').innerHTML = '';
-
-    favoris.forEach(function (elm) {
-        const division = document.createElement('div');
-    division.classList = "divisionFav";
-
-        const image =   document.createElement('img');
-        if(elm.Image.length !== 0) {
-            image.src = '../images/' + elm.Image;
-            image.style = "width: 30px; height:30px;"
-            division.appendChild(image);
-        }
-
-        const nom = document.createElement('a');
-        nom.href = elm.Url;
-        nom.target = "_blank";
-        nom.classList = 'linkHome';
-        nom.innerHTML = elm.Nom;
-        division.appendChild(nom);
-
-        const deletButtom = document.createElement('button');
-        deletButtom.classList = 'buDeleteFav'
-        const imgCroix = document.createElement('img');
-        imgCroix.classList = 'croixFav';
-        imgCroix.src = '../images/croix.png';
-        deletButtom.appendChild(imgCroix);
-        //deletButtom.innerText = 'Delete';
-        deletButtom.onclick = deletFavoris;
-        deletButtom.id = elm.Id;
-        imgCroix.id = elm.Id
-        //console.log(deletButtom.id);
-        division.appendChild(deletButtom)
-
-        divHome.appendChild(division);
-    });
-}
-
-renderHome();
-
-// faire html en rapport
-function addFavoris() {
-    const id = '' + new Date().getTime();
-    //console.log(id);
-
-    const inImage = document.getElementById('inImageFav');
-    var image;
-    if (inImage.value.length === 0) {
-        image = 'interrogation.png';
-    } else {
-        image = inImage.value;
-    }
-
-    const inNom = document.getElementById('inNomFav');
-    var nom;
-    if (inNom.value.length === 0) {
-        nom = 'inconnu';
-    } else {
-        nom = inNom.value;
-    }
-
-    const inUrl = document.getElementById('inUrlFav');
-    var url;
-    if (inUrl.value.length === 0) {
-        url = 'https://google.com'
-    } else {
-        url = inUrl.value;
-    }
-
-    favoris.push(
-        {Id:id, Image:image, Nom:nom, Url:url}
-    )
-    saveFavoris();
-    menuAddFav.style = "display:none";
-    renderHome();
-}
-
-function val(idToDelete) {
-    favoris = favoris.filter(function (fav) {
-        if (fav.Id === idToDelete) {
-            //console.log(fav.id);
-            return false;
-        } else {
-            return true;
-        }
-    });
-    //console.log(favoris);
-    saveFavoris();
-    renderHome();
-    //console.log(favoris);
-}
-
-function deletFavoris(event) {
-    const deleteButtom = event.target;
-    console.log(deleteButtom)
-    const idToDelete = deleteButtom.id;
-    console.log(idToDelete);
-    //console.log(idToDelete);
-
-    val(idToDelete);
-
-    
-}
-
-function displayAddMenu() {
-    MenuAddFav.style = "display: block;"
-}
-
 function displayDivHome() {
     // Affiche info
     divStream.style = "display:none;";
@@ -181,3 +59,138 @@ function displayDivHome() {
     //corps.style = "background-color: rgba(178, 255, 255, 1);";
     icon.src = "../images/info.png";
 }
+
+
+// Home *****************************************************************************************************************************************************************
+
+// $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+// let favoris = [];
+// const savedFavoris = JSON.parse(localStorage.getItem('favoris'));
+// if (Array.isArray(savedFavoris)) {
+//     favoris = savedFavoris;
+// } else {
+//     favoris = [];
+// }
+
+// function saveFavoris() {
+//     localStorage.setItem('favoris', JSON.stringify(favoris));
+// }
+
+function renderHome(array) {
+    document.getElementById('divHome').innerHTML = '';
+
+    array.forEach(function (elm) {
+        const division = document.createElement('div');
+    division.classList = "divisionFav";
+
+        const image =   document.createElement('img');
+        if(elm.Image.length !== 0) {
+            image.src = '../images/' + elm.Image;
+            
+        } else {
+            image.src = '../images/interrogation.png';
+        }
+        image.style = "width: 30px; height:30px;"
+        division.appendChild(image);
+
+        const nom = document.createElement('a');
+        nom.href = elm.Url;
+        nom.target = "_blank";
+        nom.classList = 'linkHome';
+        nom.innerHTML = elm.Nom;
+        division.appendChild(nom);
+
+        const deletButtom = document.createElement('button');
+        deletButtom.classList = 'buDeleteFav'
+        const imgCroix = document.createElement('img');
+        imgCroix.classList = 'croixFav';
+        imgCroix.src = '../images/croix.png';
+        deletButtom.appendChild(imgCroix);
+        //deletButtom.onclick = deletFavoris;
+        deletButtom.id = elm.Id;
+        imgCroix.id = elm.Id
+        //console.log(deletButtom.id);
+        division.appendChild(deletButtom)
+
+        divHome.appendChild(division);
+    });
+}
+
+//renderHome(favoris);
+
+// // faire html en rapport
+// function addFavoris() {
+//     const id = '' + new Date().getTime();
+//     //console.log(id);
+
+//     const inImage = document.getElementById('inImageFav');
+//     var image;
+//     if (inImage.value.length === 0) {
+//         image = 'interrogation.png';
+//     } else {
+//         image = inImage.value;
+//     }
+
+//     const inNom = document.getElementById('inNomFav');
+//     var nom;
+//     if (inNom.value.length === 0) {
+//         nom = 'inconnu';
+//     } else {
+//         nom = inNom.value;
+//     }
+
+//     const inUrl = document.getElementById('inUrlFav');
+//     var url;
+//     if (inUrl.value.length === 0) {
+//         url = 'https://google.com'
+//     } else {
+//         url = inUrl.value;
+//     }
+
+//     favoris.push(
+//         {Id:id, Image:image, Nom:nom, Url:url}
+//     )
+//     saveFavoris();
+//     menuAddFav.style = "display:none";
+//     renderHome(favoris);
+// }
+
+// function val(idToDelete) {
+//     favoris = favoris.filter(function (fav) {
+//         if (fav.Id === idToDelete) {
+//             //console.log(fav.id);
+//             return false;
+//         } else {
+//             return true;
+//         }
+//     });
+//     //console.log(favoris);
+//     saveFavoris();
+//     renderHome(favoris);
+//     //console.log(favoris);
+// }
+
+// function deletFavoris(event) {
+//     const deleteButtom = event.target;
+//     console.log(deleteButtom)
+//     const idToDelete = deleteButtom.id;
+//     console.log(idToDelete);
+//     //console.log(idToDelete);
+
+//     val(idToDelete);
+
+    
+// }
+
+// function displayAddMenu() {
+//     MenuAddFav.style = "display: block;"
+// }
+
+// $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+fetch('../json/home.json')
+.then((response) => {
+    return response.json();})
+.then((jsondata) => {
+    renderHome(jsondata.Favoris);
+});
