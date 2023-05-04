@@ -26,7 +26,7 @@
         },
         {
             "Id": "5",
-            "Image": "",
+            "Image": "liquipedia_logo.png",
             "Nom" : "Liquipedia",
             "Url": "https://Liquipedia.net"
         },
@@ -62,7 +62,7 @@
         },
         {
             "Id": "11",
-            "Image": "",
+            "Image": "Karmine_Corp_logo.png",
             "Nom" : "Karmine Corp",
             "Url": "https://www.karminecorp.fr/"
         },
