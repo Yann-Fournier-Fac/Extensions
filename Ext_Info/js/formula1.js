@@ -44,7 +44,8 @@ function displayDivFormula1() {
     }
     boutons[3].style = "background-color: rgba(255, 0, 0, 0.97);";
     //corps.style = "background-color: rgb(255, 112, 112, 1);";
-    icon.src = "../images/formula1.png";
+    icon.src = "../images/F1.png";
+    //icon.style = "width:30px; height:30px;"
 
     Formula1();
 }
