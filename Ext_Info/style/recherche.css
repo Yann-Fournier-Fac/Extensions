@@ -12,6 +12,17 @@
     margin-bottom: 10px;
 }
 
+#validation {
+    height: 40px;
+    width: 40px;
+    margin-left: 10px;
+    transition: all 0.1s;
+}
+
+#validation:hover {
+    transform: scale(120%);
+}
+
 /* Stream ***************************************************************************************************/
 #addStream {
     display: none;
@@ -363,9 +374,27 @@
     display: none;
 }
 
-#inYear {
+#races {
     font-family: 'Dongle', sans-serif;
-    font-size: 25px;
+    font-size: 20px;
+    font-weight: 400;
+    height: 40px;
+    width: 100px;
+    background-color: rgb(255, 86, 86);
+    border-style: none;
+    border-radius: 5px;
+    color: black;
+    transition: all 0.1s;
+    margin-right: 10px;
+} 
+
+#races:hover {
+    transform: scale(110%);
+}
+
+#driverStanding {
+    font-family: 'Dongle', sans-serif;
+    font-size: 20px;
     font-weight: 400;
     height: 40px;
     width: 150px;
@@ -374,32 +403,43 @@
     border-radius: 5px;
     color: black;
     transition: all 0.1s;
-}
+    margin-right: 10px;
+} 
 
-#inYear:hover {
+#driverStanding:hover {
     transform: scale(110%);
 }
 
-#inYear::placeholder{
+#constructorStanding {
     font-family: 'Dongle', sans-serif;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 400;
-    color: black;
-    align-self: center;
-}
-
-
-
-#validation {
     height: 40px;
-    width: 40px;
-    margin-left: 10px;
+    width: 150px;
+    background-color: rgb(255, 86, 86);
+    border-style: none;
+    border-radius: 5px;
+    color: black;
     transition: all 0.1s;
+} 
+
+#constructorStanding:hover {
+    transform: scale(110%);
 }
 
-#validation:hover {
-    transform: scale(120%);
+#affRaces{
+    display: block;
 }
+
+#affDriverStanding {
+    display: none; 
+}
+
+#affConstructorStanding {
+    display: none;
+}
+
+
 /* Manga *********************************************************************************************************************/
 #titre {
     display: none;
