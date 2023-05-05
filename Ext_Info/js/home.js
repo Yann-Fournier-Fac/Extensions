@@ -57,7 +57,7 @@ function displayDivHome() {
     }
     boutons[2].style = "background-color: rgba(0, 34, 255, 0.477);";
     //corps.style = "background-color: rgba(178, 255, 255, 1);";
-    icon.src = "../images/info.png";
+    icon.src = "../images/icons/info.png";
 }
 
 
@@ -81,14 +81,14 @@ function renderHome(array) {
 
     array.forEach(function (elm) {
         const division = document.createElement('div');
-    division.classList = "divisionFav";
+        division.classList = "divisionFav";
 
         const image =   document.createElement('img');
         if(elm.Image.length !== 0) {
-            image.src = '../images/' + elm.Image;
+            image.src = '../images/favoris/' + elm.Image;
             
         } else {
-            image.src = '../images/interrogation.png';
+            image.src = '../images/favoris/interrogation.png';
         }
         image.style = "width: 30px; height:30px;"
         division.appendChild(image);
@@ -104,7 +104,7 @@ function renderHome(array) {
         deletButtom.classList = 'buDeleteFav'
         const imgCroix = document.createElement('img');
         imgCroix.classList = 'croixFav';
-        imgCroix.src = '../images/croix.png';
+        imgCroix.src = '../images/icons/croix.png';
         deletButtom.appendChild(imgCroix);
         //deletButtom.onclick = deletFavoris;
         deletButtom.id = elm.Id;

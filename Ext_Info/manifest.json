@@ -11,10 +11,10 @@
         "default_popup": "./html/popup.html"
     },
     "icons": {
-        "16": "./images/info.png",
-        "32": "./images/info.png",
-        "48": "./images/info.png",
-        "128": "./images/info.png"
+        "16": "./images/icons/info.png",
+        "32": "./images/icons/info.png",
+        "48": "./images/icons/info.png",
+        "128": "./images/icons/info.png"
     },
     "permissions":[
         "alarms",

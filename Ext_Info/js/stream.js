@@ -94,7 +94,7 @@ function displayDivStream() {
     }
     boutons[0].style = "background-color: rgba(85, 0, 125, 0.8);";
     //corps.style = "background-color: rgba(255, 255, 255, 1);";
-    icon.src = "../images/twitch.png";
+    icon.src = "../images/icons/twitch.png";
     //logo.style = "background-color: rgb(209, 114, 255);";
     //buton.style = "background-color: rgb(209, 114, 255);"
 }
