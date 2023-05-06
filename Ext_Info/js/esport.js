@@ -45,6 +45,7 @@ function displayDivEsport() {
     boutons[1].style = "background-color: rgba(178, 255, 255, 1);";
     //corps.style = "background-color: rgba(0, 34, 255, 0.477);";
     icon.src = "../images/icons/esport.png";
+    icon.style = "width:50px; height:50px;"
 
     Esport();
 }

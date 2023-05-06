@@ -41,6 +41,7 @@ function displayDivManga() {
     boutons[4].style = "background-color: rgba(255, 0, 255, 1)";
     //corps.style = "background-color: rgb(255, 133, 255);";
     icon.src = "../images/icons/manga.png";
+    icon.style = "width:50px; height:50px;"
 
     Manga();
 }

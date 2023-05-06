@@ -58,6 +58,7 @@ function displayDivHome() {
     boutons[2].style = "background-color: rgba(0, 34, 255, 0.477);";
     //corps.style = "background-color: rgba(178, 255, 255, 1);";
     icon.src = "../images/icons/info.png";
+    icon.style = "width:50px; height:50px;"
 }
 
 
@@ -90,7 +91,11 @@ function renderHome(array) {
         } else {
             image.src = '../images/favoris/interrogation.png';
         }
-        image.style = "width: 30px; height:30px;"
+        if (elm.Id == "13") {
+            image.style = "width: 50px; height:25px;"
+        } else {
+            image.style = "width: 30px; height:30px;"
+        }
         division.appendChild(image);
 
         const nom = document.createElement('a');
