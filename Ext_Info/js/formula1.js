@@ -1,6 +1,11 @@
 var divFormula1 = document.getElementById('divFormula1');
 
 var year = document.getElementById('year');
+// bouton
+var buRaces = document.getElementById('races');
+var buDrivers = document.getElementById('driverStanding');
+var buConstructors = document.getElementById('constructorStanding');
+// div
 var races = document.getElementById('affRaces');
 var drivers = document.getElementById('affDriverStanding');
 var constructors = document.getElementById('affConstructorStanding');
@@ -10,15 +15,15 @@ document.getElementById('formula1').addEventListener('click', function() {
     displayDivFormula1();
 });
 
-document.getElementById('races').addEventListener('click', function() {
+buRaces.addEventListener('click', function() {
     displayRaces();
 });
 
-document.getElementById('driverStanding').addEventListener('click', function() {
+buDrivers.addEventListener('click', function() {
     displayDrivers()
 });
 
-document.getElementById('constructorStanding').addEventListener('click', function() {
+buConstructors.addEventListener('click', function() {
     displayConstructors();
 });
 // Formula 1 ************************************************************************************************************************************************************
@@ -66,18 +71,30 @@ var constructeurs = {
 };
 
 function displayRaces() {
+    buRaces.style = "background-color: rgba(255,255,255,0); border-style: solid;border-color:rgb(255, 86, 86);";
+    buDrivers.style = "background-color: rgb(255, 86, 86);";
+    buConstructors.style = "background-color: rgb(255, 86, 86);";
+
     constructors.style = "display:none;"
     drivers.style = "display:none;";
     races.style = "display:block;width:330px;height:322px;";
 }
 
 function displayDrivers() {
+    buRaces.style = "background-color: rgb(255, 86, 86);";
+    buDrivers.style = "background-color: rgba(255,255,255,0); border-style: solid; border-color:rgb(255, 86, 86);";
+    buConstructors.style = "background-color: rgb(255, 86, 86);";
+
     races.style = "display:none;";
     constructors.style = "display:none;";
     drivers.style = "display:block;width:330px;height:322px;"; 
 }
 
 function displayConstructors() {
+    buRaces.style = "background-color: rgb(255, 86, 86);";
+    buDrivers.style = "background-color: rgb(255, 86, 86);";
+    buConstructors.style = "background-color: rgba(255,255,255,0); border-style: solid;border-color:rgb(255, 86, 86);";
+
     races.style = "display:none;";
     drivers.style = "display:none;";
     constructors.style = "display:block;width:330px;height:322px;";
@@ -118,20 +135,30 @@ function Drivers(json) {
         division.style = "display: flex; flex-direction: row; justify-content: space-between;    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); margin-top: 5px; margin-bottom: 5px; border-radius: 10px; width: 400px; vertical-align: middle; padding-left: 0px;padding-right: 30px;font-size:80px; background-color:" + constructeurs[element.Constructors[0].constructorId].backcolor;
         //division.className = "";
 
+        var place = document.createElement('p');
+        place.innerHTML = element.position + ".";
+        place.style = "display: inline; font-size:80px; margin:0px;font-family: 'Dongle', sans-serif;padding-left:20px;color:" + constructeurs[element.Constructors[0].constructorId].color;
+
+        var divPilot = document.createElement('div');
+        divPilot.style = "display: flex; flex-direction: row; justify-content: center; text-align: center;";
+
         var photo = document.createElement('img');
         photo.src = pilots[element.Driver.familyName];
-        photo.style = "width: 90px; height:90px;border-radius: 10px;";
+        photo.style = "width: 70px; height:70px;border-radius: 100%;margin-right:10px;margin-top:20px;margin-bottom:0px;";
 
         var name = document.createElement('p');
         name.innerHTML = element.Driver.familyName;
-        name.style = "display: inline;font-family: 'Dongle', sans-serif;font-size: 25px;font-weight: 400;color:" + constructeurs[element.Constructors[0].constructorId].color;
+        name.style = "display: inline;font-family: 'Dongle', sans-serif;font-size: 25px;margin-top:35px;margin-bottom:0px;font-weight: 400;color:" + constructeurs[element.Constructors[0].constructorId].color;
 
         var points = document.createElement('p');
         points.innerHTML = element.points;
-        points.style = "display: inline;font-family: 'Dongle', sans-serif;font-size: 25px;font-weight: 400;color:" + constructeurs[element.Constructors[0].constructorId].color;
+        points.style = "display: inline;font-family: 'Dongle', sans-serif;font-size: 50px;font-weight: 400;margin-top:20px;margin-bottom:0px;color:" + constructeurs[element.Constructors[0].constructorId].color;
 
-        division.appendChild(photo);
-        division.appendChild(name);
+
+        divPilot.appendChild(photo);
+        divPilot.appendChild(name);
+        division.appendChild(place);
+        division.appendChild(divPilot);
         division.appendChild(points);
         drivers.appendChild(division);
     });

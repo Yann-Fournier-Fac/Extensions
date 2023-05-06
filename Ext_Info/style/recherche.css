@@ -380,9 +380,10 @@
     font-weight: 400;
     height: 40px;
     width: 100px;
-    background-color: rgb(255, 86, 86);
-    border-style: none;
+    background-color: rgba(255, 255, 255, 1);
+    border-style: solid;
     border-radius: 5px;
+    border-color: rgb(255, 86, 86);;
     color: black;
     transition: all 0.1s;
     margin-right: 10px;
