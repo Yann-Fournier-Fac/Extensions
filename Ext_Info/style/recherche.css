@@ -446,7 +446,7 @@
     background-color: transparent;
     width: 430px;
     height: 80px;
-    /* perspective: 1000px; Remove this if you don't want the 3D effect */
+    perspective: 1000px; /*Remove this if you don't want the 3D effect */
 }
 
 .flip-card-inner {
@@ -456,9 +456,13 @@
     transform-style: preserve-3d;
 }
 
-.flip-card:hover .flip-card-inner {
+.flip-card-inner.is-flipped {
     transform: rotateY(180deg);
 }
+
+/* .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+} */
 
 .divisionRacesFront, .divisionRacesBack{
     position: absolute;

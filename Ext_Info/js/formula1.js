@@ -27,6 +27,13 @@ buConstructors.addEventListener('click', function() {
     displayConstructors();
 });
 
+var cards = document.querySelectorAll(".flip-card-inner");
+console.log(cards);
+[...cards].forEach((card) => {
+    card.addEventListener( 'click', function() {
+        card.classList.toggleClass('is-flipped');
+      });
+});
 // Formula 1 ************************************************************************************************************************************************************
 var urlRaces = "http://ergast.com/api/f1/current.json";
 var urlDrivers = "http://ergast.com/api/f1/current/driverStandings.json";
@@ -159,7 +166,7 @@ function displayDivFormula1() {
 
 function Races(json) {
     var courses = json.MRData.RaceTable.Races;
-    console.log(courses)
+    //console.log(courses)
     courses.forEach(element => {
         var flipCard = document.createElement('div');
         flipCard.className = "flip-card";
