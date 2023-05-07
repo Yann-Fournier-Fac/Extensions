@@ -26,9 +26,12 @@ buDrivers.addEventListener('click', function() {
 buConstructors.addEventListener('click', function() {
     displayConstructors();
 });
+
 // Formula 1 ************************************************************************************************************************************************************
+var urlRaces = "http://ergast.com/api/f1/current.json";
 var urlDrivers = "http://ergast.com/api/f1/current/driverStandings.json";
 var urlConstructors = "http://ergast.com/api/f1/current/constructorStandings.json";
+var urlNextGP = "http://ergast.com/api/f1/current/next.json";
 
 var pilots = {
     "Albon": "../images/Formula1/Drivers/albon.png",
@@ -69,6 +72,23 @@ var constructeurs = {
     "williams": {"logo": "../images/Formula1/Teams/williams.png", "color":"rgba(255, 255, 255, 1)", "backcolor": "rgba(0, 130, 250, 1);"},
     "haas": {"logo": "../images/Formula1/Teams/haas.png", "color":"rgba(0, 0, 0, 1)", "backcolor": "rgba(255, 255, 255, 1);"}
 };
+
+var Mois = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"];
+
+function numDateToString(date) {
+    if (date[8] == "0") {
+        var jour = date[9];
+    } else {
+        var jour = date[8] + date[9];
+    }
+    if (date[5] === "0") {
+        var mois = Mois[parseInt(date[6], 10) - 1];
+    } else {
+        var mois = Mois[parseInt(date[5] + date[6], 10)-1];
+    }
+    return jour + " " + mois
+} 
+
 
 function displayRaces() {
     buRaces.style = "background-color: rgba(255,255,255,0); border-style: solid;border-color:rgb(255, 86, 86);";
@@ -128,10 +148,100 @@ function displayDivFormula1() {
     //icon.style = "width:30px; height:30px;"
 }
 
+// var date = new Date();
+// console.log(date);
+// console.log(date.getDate()); // jour du mois
+// console.log(date.getMonth()); // mois
+
+
+// transform: rotateY(180deg);
+// https://www.w3schools.com/howto/howto_css_flip_card.asp
+
+function Races(json) {
+    var courses = json.MRData.RaceTable.Races;
+    console.log(courses)
+    courses.forEach(element => {
+        var flipCard = document.createElement('div');
+        flipCard.className = "flip-card";
+
+        var flipCardInner = document.createElement('div');
+        flipCardInner.className = "flip-card-inner";
+
+        var divisionFront = document.createElement('div');
+        divisionFront.className = "divisionRacesFront"
+        divisionFront.id = element.raceName;
+ 
+        var numero = document.createElement('p');
+        numero.innerHTML = element.round + ".";
+        numero.style = "display: inline; font-size:50px; margin:0px;font-family: 'Dongle', sans-serif;padding-left:20px;color: rgb(0, 0, 0);";
+
+        var gpName = document.createElement('p');
+        gpName.innerHTML = element.raceName;
+        gpName.style = "display: inline;font-family: 'Dongle', sans-serif;font-size: 25px;margin-top:20px;margin-bottom:0px;font-weight: 400;color:rgb(0,0,0);";
+
+        var date = document.createElement('p');
+        date.innerHTML = numDateToString(element.date);;
+        date.style = "display: inline;font-family: 'Dongle', sans-serif;font-size: 30px;font-weight: 400;margin-top:17px;margin-bottom:0px;color:rgb(0,0,0);";
+
+        var divisionBack = document.createElement('div');
+        divisionBack.className = "divisionRacesBack";
+        divisionBack.id = element.raceName+"B";
+
+        var numero2 = document.createElement('p');
+        numero2.innerHTML = element.round + ".";
+        numero2.style = "display: inline; font-size:50px; margin:0px;font-family: 'Dongle', sans-serif;padding-left:20px;color: rgb(0, 0, 0);";
+
+        var gpName2 = document.createElement('p');
+        gpName2.innerHTML = element.raceName;
+        gpName2.style = "display: inline;font-family: 'Dongle', sans-serif;font-size: 25px;margin-top:20px;margin-bottom:0px;font-weight: 400;color:rgb(0,0,0);";
+
+        var date2 = document.createElement('p');
+        date2.innerHTML = numDateToString(element.date);;
+        date2.style = "display: inline;font-family: 'Dongle', sans-serif;font-size: 30px;font-weight: 400;margin-top:17px;margin-bottom:0px;color:rgb(0,0,0);";
+
+        divisionFront.appendChild(numero);
+        divisionFront.appendChild(gpName);
+        divisionFront.appendChild(date);
+        divisionBack.appendChild(numero2);
+        divisionBack.appendChild(gpName2);
+        divisionBack.appendChild(date2);
+        flipCardInner.appendChild(divisionFront);
+        flipCardInner.appendChild(divisionBack);
+        flipCard.appendChild(flipCardInner);
+        races.appendChild(flipCard);
+    });
+    var para = document.createElement('p');
+    para.innerHTML = "para pour faire une bande blanche en dessous (style)";
+    para.style = "color : rgb(255, 255, 255); margin-top: 9px;"
+    races.appendChild(para);
+}
+
+fetch(urlRaces)
+.then((response) =>  {
+    return response.json();
+}).then((json) => Races(json));
+
+function NextGP(json) {
+    var next = document.getElementById(json.MRData.RaceTable.Races[0].raceName);
+    //console.log(next)
+    next.className = "divisionNextRacesFront";
+
+    var nextBack = document.getElementById(json.MRData.RaceTable.Races[0].raceName + "B");
+    //console.log(next)
+    nextBack.className = "divisionNextRacesBack";
+}
+fetch(urlNextGP)
+.then((response) =>  {
+    return response.json();
+}).then((json) => NextGP(json));
+
+
+
 function Drivers(json) {
     var driv = json.MRData.StandingsTable.StandingsLists[0].DriverStandings;
     //console.log(driv);
     driv.forEach(element => {
+
         var division = document.createElement('div');
         division.style = "display: flex; flex-direction: row; justify-content: space-between;    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); margin-top: 5px; margin-bottom: 5px; border-radius: 10px; width: 400px; vertical-align: middle; padding-left: 0px;padding-right: 30px;font-size:80px; background-color:" + constructeurs[element.Constructors[0].constructorId].backcolor;
         //division.className = "";
@@ -155,7 +265,6 @@ function Drivers(json) {
         points.innerHTML = element.points;
         points.style = "display: inline;font-family: 'Dongle', sans-serif;font-size: 50px;font-weight: 400;margin-top:20px;margin-bottom:0px;color:" + constructeurs[element.Constructors[0].constructorId].color;
 
-
         divPilot.appendChild(photo);
         divPilot.appendChild(name);
         division.appendChild(place);
@@ -163,6 +272,11 @@ function Drivers(json) {
         division.appendChild(points);
         drivers.appendChild(division);
     });
+
+    var para = document.createElement('p');
+    para.innerHTML = "para pour faire une bande blanche en dessous (style)";
+    para.style = "color : rgb(255, 255, 255); margin-top: 9px;"
+    drivers.appendChild(para);
 }
 
 fetch(urlDrivers)
@@ -173,7 +287,7 @@ fetch(urlDrivers)
 
 function Constructors(json) {
     var constru = json.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
-    console.log(constru);
+    //console.log(constru);
     constru.forEach(element => {
         var division = document.createElement('div');
         division.style = "display: flex; flex-direction: row; justify-content: space-between;    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); margin-top: 5px; margin-bottom: 5px; border-radius: 10px; width: 400px; vertical-align: middle; padding-left: 0px;padding-right: 30px;font-size:80px; background-color:" + constructeurs[element.Constructor.constructorId].backcolor;
@@ -204,6 +318,10 @@ function Constructors(json) {
         division.appendChild(points)
         constructors.appendChild(division);
     });
+    var para = document.createElement('p');
+    para.innerHTML = "para pour faire une bande blanche en dessous (style)";
+    para.style = "color : rgb(255, 255, 255); margin-top: 9px;"
+    constructors.appendChild(para);
     
 }
 
