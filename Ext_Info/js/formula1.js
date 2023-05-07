@@ -250,27 +250,27 @@ function Drivers(json) {
     driv.forEach(element => {
 
         var division = document.createElement('div');
-        division.style = "display: flex; flex-direction: row; justify-content: space-between;    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); margin-top: 5px; margin-bottom: 5px; border-radius: 10px; width: 400px; vertical-align: middle; padding-left: 0px;padding-right: 30px;font-size:80px; background-color:" + constructeurs[element.Constructors[0].constructorId].backcolor;
+        division.style = "display: flex; flex-direction: row; justify-content: space-between; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); margin-top: 5px; margin-bottom: 5px; border-radius: 10px; width: 400px;height:90px; vertical-align: middle; padding-left: 0px;padding-right: 30px;font-size:80px; background-color:" + constructeurs[element.Constructors[0].constructorId].backcolor;
         //division.className = "";
 
         var place = document.createElement('p');
         place.innerHTML = element.position + ".";
-        place.style = "display: inline; font-size:80px; margin:0px;font-family: 'Dongle', sans-serif;padding-left:20px;color:" + constructeurs[element.Constructors[0].constructorId].color;
+        place.style = "display: inline; font-size:70px; margin-top:0px;margin-bottom: 0px;font-family: 'Dongle', sans-serif;padding-left:20px;color:" + constructeurs[element.Constructors[0].constructorId].color;
 
         var divPilot = document.createElement('div');
         divPilot.style = "display: flex; flex-direction: row; justify-content: center; text-align: center;";
 
         var photo = document.createElement('img');
         photo.src = pilots[element.Driver.familyName];
-        photo.style = "width: 70px; height:70px;border-radius: 100%;margin-right:10px;margin-top:20px;margin-bottom:0px;";
+        photo.style = "width: 70px; height:70px;border-radius: 100%;margin-right:10px;margin-top:10px;margin-bottom:0px;";
 
         var name = document.createElement('p');
         name.innerHTML = element.Driver.familyName;
-        name.style = "display: inline;font-family: 'Dongle', sans-serif;font-size: 25px;margin-top:35px;margin-bottom:0px;font-weight: 400;color:" + constructeurs[element.Constructors[0].constructorId].color;
+        name.style = "display: inline;font-family: 'Dongle', sans-serif;font-size: 25px;margin-top:28px;margin-bottom:0px;font-weight: 400;color:" + constructeurs[element.Constructors[0].constructorId].color;
 
         var points = document.createElement('p');
         points.innerHTML = element.points;
-        points.style = "display: inline;font-family: 'Dongle', sans-serif;font-size: 50px;font-weight: 400;margin-top:20px;margin-bottom:0px;color:" + constructeurs[element.Constructors[0].constructorId].color;
+        points.style = "display: inline;font-family: 'Dongle', sans-serif;font-size: 50px;font-weight: 400;margin-top:11px;margin-bottom:0px;color:" + constructeurs[element.Constructors[0].constructorId].color;
 
         divPilot.appendChild(photo);
         divPilot.appendChild(name);
@@ -297,26 +297,26 @@ function Constructors(json) {
     //console.log(constru);
     constru.forEach(element => {
         var division = document.createElement('div');
-        division.style = "display: flex; flex-direction: row; justify-content: space-between;    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); margin-top: 5px; margin-bottom: 5px; border-radius: 10px; width: 400px; vertical-align: middle; padding-left: 0px;padding-right: 30px;font-size:80px; background-color:" + constructeurs[element.Constructor.constructorId].backcolor;
+        division.style = "display: flex; flex-direction: row; justify-content: space-between; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); margin-top: 5px; margin-bottom: 5px; border-radius: 10px; width: 400px;height: 90px; vertical-align: middle; padding-left: 0px;padding-right: 30px;font-size:80px; background-color:" + constructeurs[element.Constructor.constructorId].backcolor;
 
         var place = document.createElement('p');
         place.innerHTML= element.position + ".";
-        place.style = "display: inline; font-size:80px; margin:0px;font-family: 'Dongle', sans-serif;padding-left:20px; color:" + constructeurs[element.Constructor.constructorId].color;
+        place.style = "display: inline; font-size:70px; margin:0px;font-family: 'Dongle', sans-serif;padding-left:20px; color:" + constructeurs[element.Constructor.constructorId].color;
 
         var divTeams = document.createElement('div');
         divTeams.style = "display: flex; flex-direction: row; justify-content: center; text-align: center;";
 
         var logo = document.createElement('img');
         logo.src = constructeurs[element.Constructor.constructorId].logo;
-        logo.style = "width: 70px; height:70px;border-radius: 100%;margin-right:10px;margin-top:20px; margin-bottom:0px;";
+        logo.style = "width: 70px; height:70px;border-radius: 100%;margin-right:10px;margin-top:10px; margin-bottom:0px;";
 
         var name = document.createElement('p');
         name.innerHTML = element.Constructor.name;
-        name.style = "display: inline;font-family: 'Dongle', sans-serif;margin-top:40px; margin-bottom:0px; font-size: 25px;font-weight: 400; color:" + constructeurs[element.Constructor.constructorId].color;
+        name.style = "display: inline;font-family: 'Dongle', sans-serif;margin-top:28px; margin-bottom:0px; font-size: 25px;font-weight: 400; color:" + constructeurs[element.Constructor.constructorId].color;
 
         var points = document.createElement('p');
         points.innerHTML = element.points;
-        points.style = "display: inline;font-family: 'Dongle', sans-serif;font-size: 50px;font-weight: 400;margin-top: 25px;margin-bottom: 0px; color:" + constructeurs[element.Constructor.constructorId].color;
+        points.style = "display: inline;font-family: 'Dongle', sans-serif;font-size: 50px;font-weight: 400;margin-top: 11px;margin-bottom: 0px; color:" + constructeurs[element.Constructor.constructorId].color;
 
         divTeams.appendChild(logo);
         divTeams.appendChild(name);
