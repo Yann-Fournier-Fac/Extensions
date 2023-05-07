@@ -91,8 +91,12 @@ function renderHome(array) {
         } else {
             image.src = '../images/favoris/interrogation.png';
         }
-        if (elm.Id == "13") {
+        if (elm.Id === "13") {
             image.style = "width: 50px; height:25px;"
+        } else if (elm.Id === "5") {
+            image.style = "width: 45px; height:30px;"
+        }else if (elm.Id === "10") {
+            image.style = "width: 35px; height:25px;"
         } else {
             image.style = "width: 30px; height:30px;"
         }
