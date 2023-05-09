@@ -27,7 +27,7 @@ buConstructors.addEventListener('click', function() {
     displayConstructors();
 });
 
-var cards = document.querySelectorAll(".flip-card-inner");
+var cards = document.querySelectorAll('.flip-card-inner');
 console.log(cards);
 [...cards].forEach((card) => {
     card.addEventListener( 'click', function() {
