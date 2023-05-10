@@ -57,7 +57,7 @@ function displayDivHome() {
     }
     boutons[2].style = "background-color: rgba(0, 34, 255, 0.477);";
     //corps.style = "background-color: rgba(178, 255, 255, 1);";
-    icon.src = "../images/icons/info.png";
+    icon.src = "../images/icons/maison.png";
     icon.style = "width:50px; height:50px;"
 }
 

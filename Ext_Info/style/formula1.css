@@ -83,7 +83,9 @@
 .flip-card {
     background-color: transparent;
     width: 430px;
-    height: 80px;
+    height: 105px;
+    margin-top: 10px; 
+    margin-bottom: 10px; 
     perspective: 1000px; /*Remove this if you don't want the 3D effect */
 }
 
@@ -94,22 +96,26 @@
     transform-style: preserve-3d;
 }
 
-/* .flip-card-inner.is-flipped {
+.is-flipped {
+    position: relative;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
     transform: rotateY(180deg);
-} */
+}
 
 .flip-card:hover .flip-card-inner {
     cursor: pointer;
-    transform: scale(105%);
+    /* transform: scale(105%); */
 }
 
-.flip-card:active .flip-card-inner {
-    transform: rotateY(180deg) scale(105%);
-}
+/* .flip-card:active .flip-card-inner {
+    transform: rotateY(180deg);
+} */
 
 .divisionRacesFront, .divisionRacesBack{
     position: absolute;
-    -webkit-backface-visibility: hidden; /* Safari */
+    -webkit-backface-visibility: hidden; 
     backface-visibility: hidden;
 }
 
@@ -118,12 +124,10 @@
     flex-direction: row; 
     justify-content: space-between;    
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); 
-    margin-top: 5px; 
-    margin-bottom: 5px; 
     /* margin-left: 50px; */
     border-radius: 10px; 
     width: 400px;
-    height: 72,5px;
+    height: 105px;
     vertical-align: middle; 
     padding-left: 0px;
     padding-right: 30px;
@@ -136,11 +140,9 @@
     flex-direction: row; 
     justify-content: space-between;    
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); 
-    margin-top: 5px; 
-    margin-bottom: 5px;
     border-radius: 10px;
     width: 400px;
-    height: 72,5px;
+    height: 105px;
     vertical-align: middle; 
     padding-left: 0px;
     padding-right: 30px;
@@ -154,11 +156,9 @@
     flex-direction: row; 
     justify-content: space-between;    
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); 
-    margin-top: 5px; 
-    margin-bottom: 5px; 
     border-radius: 10px; 
     width: 400px;
-    height: 72,5px;
+    height: 105px;
     vertical-align: middle; 
     padding-left: 0px;
     padding-right: 30px;
@@ -171,11 +171,9 @@
     flex-direction: row; 
     justify-content: space-between;    
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); 
-    margin-top: 5px; 
-    margin-bottom: 5px; 
     border-radius: 10px; 
     width: 400px;
-    height: 72,5px;
+    height: 105px;
     vertical-align: middle; 
     padding-left: 0px;
     padding-right: 30px;

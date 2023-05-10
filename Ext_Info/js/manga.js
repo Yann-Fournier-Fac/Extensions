@@ -14,7 +14,27 @@ var man = document.createElement('p');
 man.innerHTML="Manga";
 divManga.appendChild(man);
 
-function Manga() {}
+const urlManga = 'https://anilistmikilior1v1.p.rapidapi.com/getAnimeList';
+const options = {
+	method: 'POST',
+	headers: {
+		'content-type': 'application/x-www-form-urlencoded',
+		'X-RapidAPI-Key': 'd851300a01mshbd5199c8ec6fa3ap18ade3jsn969e73f40282',
+		'X-RapidAPI-Host': 'Anilistmikilior1V1.p.rapidapi.com'
+	},
+	body: new URLSearchParams({
+		userId: 'Ryu LGC'
+	})
+};
+
+
+function Manga() {
+    // fetch(urlManga, options)
+    // .then((response) => {
+    //     console.log("2");
+    //     return response.json();
+    // }).then((json) => console.log(json))
+}
 
 function displayDivManga() {
     // affiche info
@@ -45,3 +65,8 @@ function displayDivManga() {
 
     Manga();
 }
+
+
+
+
+
