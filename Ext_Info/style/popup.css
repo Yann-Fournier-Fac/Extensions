@@ -77,7 +77,7 @@ button{
     font-family: 'Dongle', sans-serif;
     font-size: 25px;
     font-weight: 400;
-    background-color: rgba(255, 0, 0, 0);
+    background-color: rgba(255, 86, 86,0);
     border-style: none;
     border-radius: 10%;
     transition: background-color 0.15s;
@@ -107,7 +107,7 @@ button{
     cursor: pointer;
 }
 .buformula1:hover {
-    background-color: rgba(255, 0, 0, 0.97);
+    background-color: rgb(255, 86, 86);
     transform: scale(110%);
     cursor: pointer;
 }

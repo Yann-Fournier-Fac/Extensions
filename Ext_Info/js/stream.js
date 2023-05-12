@@ -82,7 +82,8 @@ var Streamer =  {
     "Solary": "https://static-cdn.jtvnw.net/jtv_user_pictures/3b6094ef-a538-42c9-ad59-25a0fe719ee2-profile_image-300x300.png",
     "LeBouseuh": "https://static-cdn.jtvnw.net/jtv_user_pictures/9a6e58e5-2da6-47e4-a4ce-eb91a0d1572d-profile_image-300x300.png",
     "Mastu": "https://static-cdn.jtvnw.net/jtv_user_pictures/64e280b4-d6a1-4819-922b-9d4f8c80a3c7-profile_image-300x300.png",
-    "Squeezie": "https://static-cdn.jtvnw.net/jtv_user_pictures/df3e5800-b524-4c4e-87b0-8b3646d9185a-profile_image-70x70.png"
+    "Squeezie": "https://static-cdn.jtvnw.net/jtv_user_pictures/df3e5800-b524-4c4e-87b0-8b3646d9185a-profile_image-70x70.png",
+    "RomainLanery": "https://static-cdn.jtvnw.net/jtv_user_pictures/a9602247-c501-4406-a091-3c1df93fbc72-profile_image-70x70.png"
 }
 
 var clientId = '09v5b6vch1hsywuyw8j0d5gqxik09j';
@@ -117,7 +118,7 @@ function displayDivStream() {
         boutons[i].classList = "bustream";
         //boutons[i].style.cssText ="button:hover {background-color: rgba(85, 0, 125, 0.8);}";
     }
-    boutons[0].style = "background-color: rgba(85, 0, 125, 0.8);";
+    boutons[0].style = "background-color: rgba(215, 143, 245,1);";
     //corps.style = "background-color: rgba(255, 255, 255, 1);";
     icon.src = "../images/icons/twitch.png";
     icon.style = "width:50px; height:50px;"

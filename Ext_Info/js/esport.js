@@ -42,10 +42,17 @@ function displayDivEsport() {
         boutons[i].classList = "buesport";
         //boutons[i].style.cssText ="button:hover {background-color: rgba(178, 255, 255, 1);}";
     }
-    boutons[1].style = "background-color: rgba(178, 255, 255, 1);";
+    boutons[1].style = "background-color: rgb(205, 255, 255);";
     //corps.style = "background-color: rgba(0, 34, 255, 0.477);";
     icon.src = "../images/icons/esport.png";
     icon.style = "width:50px; height:50px;"
 
     Esport();
 }
+
+// const Options = {method: 'GET', headers: {accept: 'application/json'}};
+
+// fetch('https://api.pandascore.co/additions?sort=&page=1&per_page=50&type=&videogame=', Options)
+// .then(response => response.json())
+// .then(response => console.log(response))
+// .catch(err => console.error(err));

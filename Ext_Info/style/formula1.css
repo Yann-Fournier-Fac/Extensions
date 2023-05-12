@@ -18,7 +18,7 @@
     background-color: rgba(255, 255, 255, 1);
     border-style: solid;
     border-radius: 5px;
-    border-color: rgb(255, 86, 86);;
+    border-color: rgb(255, 86, 86);
     color: black;
     transition: all 0.1s;
     margin-right: 10px;
@@ -147,7 +147,7 @@
     padding-left: 0px;
     padding-right: 30px;
     font-size:80px; 
-    background-color: rgba(255, 86, 86, 1);
+    background-color: rgba(255, 86, 86, 0.5);
     transform: rotateY(180deg);
 }
 
@@ -163,7 +163,7 @@
     padding-left: 0px;
     padding-right: 30px;
     font-size:80px; 
-    background-color: rgba(255, 255, 255, 1);
+    background-color: rgba(89, 255, 86, 0.5);
 }
 
 .divisionNextRacesBack {
@@ -178,7 +178,7 @@
     padding-left: 0px;
     padding-right: 30px;
     font-size:80px; 
-    background-color: rgba(255, 86, 86, 0.5);
+    background-color: rgba(89, 255, 86, 0.5);
     transform: rotateY(180deg);
 }
 
@@ -186,4 +186,20 @@
     position: absolute;
     -webkit-backface-visibility: hidden; /* Safari */
     backface-visibility: hidden;
+}
+
+.divisionPastRacesBack {
+    display: flex; 
+    flex-direction: row; 
+    /* justify-content: space-between;     */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); 
+    border-radius: 10px;
+    width: 400px;
+    height: 105px;
+    vertical-align: middle; 
+    padding-left: 0px;
+    padding-right: 30px;
+    font-size:80px; 
+    background-color: rgba(255, 86, 86, 0.5);
+    transform: rotateY(180deg);
 }

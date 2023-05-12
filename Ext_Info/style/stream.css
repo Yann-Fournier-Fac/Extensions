@@ -31,7 +31,7 @@
     font-family: 'Dongle', sans-serif;
     font-size: 25px;
     font-weight: 400;
-    background-color: rgb(215, 143, 248);
+    background-color: rgba(215, 143, 245, 0.5);
     border-style: none;
     border-radius: 5px;
     transition: all 0.1s;

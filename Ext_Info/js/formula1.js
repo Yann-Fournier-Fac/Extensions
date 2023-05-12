@@ -27,13 +27,6 @@ buConstructors.addEventListener('click', function() {
     displayConstructors();
 });
 
-var truc = races.childNodes;
-truc.forEach(element => {
-    console.log("aaaa");
-})
-console.log(races.childNodes);
-
-
 
 // Formula 1 ************************************************************************************************************************************************************
 var urlRaces = "http://ergast.com/api/f1/current.json";
@@ -81,7 +74,7 @@ var constructeurs = {
     "haas": {"logo": "../images/Formula1/Teams/haas.png", "color":"rgba(0, 0, 0, 1)", "backcolor": "rgba(255, 255, 255, 1);"}
 };
 
-var Mois = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"];
+var Mois = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Sept", "Oct", "Nov", "Déc"];
 
 function displayRaces() {
     buRaces.style = "background-color: rgba(255,255,255,0); border-style: solid;border-color:rgb(255, 86, 86);";
@@ -134,7 +127,7 @@ function displayDivFormula1() {
         boutons[i].classList = "buformula1";
         //boutons[i].style.cssText ="button:hover {background-color: rgba(255, 0, 0, 0.97);}";
     }
-    boutons[3].style = "background-color: rgba(255, 0, 0, 0.97);";
+    boutons[3].style = "background-color: rgba(255, 86, 86, 1);";
     //corps.style = "background-color: rgb(255, 112, 112, 1);";
     icon.src = "../images/icons/form1.png";
     icon.style = "width:100px; height:50px;"
@@ -193,7 +186,7 @@ function RacesFront(json) {
         gpName.style = "display: inline;font-family: 'Dongle', sans-serif;font-size: 25px;margin-top:33px;margin-bottom:0px;font-weight: 400;color:rgb(0,0,0);";
 
         var date = document.createElement('p');
-        date.innerHTML = numDateToString(element.date);;
+        date.innerHTML = numDateToString(element.date);
         date.style = "display: inline;font-family: 'Dongle', sans-serif;font-size: 30px;font-weight: 400;margin-top:32px;margin-bottom:0px;color:rgb(0,0,0);";
         
         divisionFront.appendChild(numero);
@@ -212,7 +205,7 @@ function RacesFront(json) {
         sunday.style = "display: flex; flex-direction:column; font-family: 'Dongle', sans-serif;font-size: 30px;font-weight: 400;margin-top:0px;margin-bottom:0px;color:rgb(0,0,0);";
 
         var sund = document.createElement('p');
-        sund.innerHTML = "Sunday"
+        sund.innerHTML = "Dim " + numDateToString(element.date);
         sund.style = "margin-top: 0px; margin-bottom: 0px; font-size: 30px;";
 
         var course = document.createElement('p');
@@ -222,17 +215,16 @@ function RacesFront(json) {
         sunday.appendChild(sund);
         sunday.appendChild(course);
 
-        var friday = document.createElement('div');
-        friday.innerHTML = "Friday";
-        friday.style = "display: flex; flex-direction:column; font-size:30px; margin:0px;font-family: 'Dongle', sans-serif;padding-left:20px;color: rgb(0, 0, 0);";
-
-        var saturday = document.createElement('div');
-        saturday.innerHTML = "Saturday";
-        saturday.style = "display: flex; flex-direction:column;font-family: 'Dongle', sans-serif;font-size: 30px;margin-top:0px;margin-bottom:0px;font-weight: 400;color:rgb(0,0,0);";
-
         var fp1 = element.FirstPractice;
         var fp2 = element.SecondPractice;;
         var qualif = element.Qualifying;
+
+        var friday = document.createElement('div');
+        friday.innerHTML = "Ven " + numDateToString(fp1.date);
+        friday.style = "display: flex; flex-direction:column; font-size:30px; margin:0px;font-family: 'Dongle', sans-serif;padding-left:20px;color: rgb(0, 0, 0);";
+
+        var saturday = document.createElement('div');
+        saturday.style = "display: flex; flex-direction:column;font-family: 'Dongle', sans-serif;font-size: 30px;margin-top:0px;margin-bottom:0px;font-weight: 400;color:rgb(0,0,0);";
         
         var freeP1 = document.createElement('p');
         freeP1.innerHTML = "FP1 : " + hourToHour(fp1.time);
@@ -245,20 +237,13 @@ function RacesFront(json) {
         if (fp2.date === fp1.date) {
             friday.appendChild(freeP2); 
         } else {
+            saturday.innerHTML = "Sam " + numDateToString(fp2.date);
             saturday.appendChild(freeP2); 
-        }  
-
-        var qual = document.createElement('p');
-        qual.innerHTML = "Qualifying : " + hourToHour(qualif.time);
-        qual.style = "display: inline; margin-top: 0px; margin-bottom: 0px; font-size:20px;"; 
-        if (qualif.date === fp1.date) {
-            friday.appendChild(qual); 
-        } else {
-            saturday.appendChild(qual); 
         }
 
         try {
             var fp3 = element.ThirdPractice;
+            saturday.innerHTML = "Sam " + numDateToString(fp3.date);
             var freeP3 = document.createElement('p');
             freeP3.innerHTML = "FP3 : " + hourToHour(fp3.time);
             freeP3.style = "display: inline; margin-top: 0px; margin-bottom: 0px; font-size:20px;"; 
@@ -275,9 +260,14 @@ function RacesFront(json) {
             } 
         }
 
-        try {
-            var sprint = element.Sprint;
-        } catch (error) {}
+        var qual = document.createElement('p');
+        qual.innerHTML = "Qualifying : " + hourToHour(qualif.time);
+        qual.style = "display: inline; margin-top: 0px; margin-bottom: 0px; font-size:20px;"; 
+        if (qualif.date === fp1.date) {
+            friday.appendChild(qual); 
+        } else {
+            saturday.appendChild(qual); 
+        }
 
         divisionBack.appendChild(friday);
         divisionBack.appendChild(saturday);
@@ -294,10 +284,7 @@ function RacesFront(json) {
 
     // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     var cards = document.querySelectorAll(".flip-card-inner");
-    console.log(document);
-    console.log("cards : " ,cards);
     cards.forEach((card) => {
-        console.log("truc");
         card.addEventListener( 'click', function() {
             if (card.classList.contains('is-flipped')){
                 card.classList.remove('is-flipped');
@@ -328,6 +315,118 @@ fetch(urlNextGP)
 .then((response) =>  {
     return response.json();
 }).then((json) => NextGP(json));
+
+function podium(json) {
+    try {
+        console.log(json.MRData.RaceTable.Races[0].raceName)
+    } catch (r) {}
+    
+    if (json.MRData.RaceTable.Races.length !== 0) {
+        var circuit = document.getElementById(json.MRData.RaceTable.Races[0].raceName + "B");
+        circuit.innerHTML = "";
+        circuit.Name = "divisionPastRecesBack"
+       
+    var results = document.createElement('div');
+        results.style = "display: flex; flex-direction: column; width: 200px;height: 100%;";
+        
+
+        
+
+        try {
+            var driv = document.createElement('div')
+            driv.style = "display: flex; flex-direction: row; justify-content: space-between;";
+            var premier = document.createElement('p');
+            premier.innerHTML = "Premier";
+            premier.style = "display: inline;font-size:20px;font-family: 'Dongle', sans-serif; margin:0px;";
+            var deuxieme = document.createElement('p');
+            deuxieme.innerHTML = "Deuxième";
+            deuxieme.style = "display: inline;font-size:20px;font-family: 'Dongle', sans-serif;margin:0px;";
+            var troisieme = document.createElement('p');
+            troisieme.innerHTML = "Troisième";
+            troisieme.style = "display: inline;font-size:20px;font-family: 'Dongle', sans-serif;margin:0px;";
+        } catch (e) {
+            console.log("3");
+        }
+
+        var podium = document.createElement('img');
+        podium.src = "../images/Formula1/podium.png";
+        podium.style = "width:50px; heigth: 30px;";
+
+        try {
+            driv.appendChild(deuxieme);
+            driv.appendChild(premier);
+            driv.appendChild(troisieme);
+            results.appendChild(driv);
+            results.appendChild(podium);
+        } catch (r) {
+            console.log("5");
+        }
+        var fastestLap = document.createElement('div');
+        circuit.appendChild(results);
+    } 
+}
+
+function writeNext(i)
+{
+    if(i == 8)
+        return;
+
+    setTimeout(function()
+    {
+        if (i >= 0) {
+            fetch("http://ergast.com/api/f1/current/" + (i*3+1) + "/results.json")
+            .then((response) =>  {
+                return response.json();
+            }).then((json) => podium(json));
+            fetch("http://ergast.com/api/f1/current/" + (i*3+2) + "/results.json")
+            .then((response) =>  {
+                return response.json();
+            }).then((json) => podium(json));
+            fetch("http://ergast.com/api/f1/current/" + (i*3+3) + "/results.json")
+            .then((response) =>  {
+                return response.json();
+            }).then((json) => podium(json));
+        }
+        writeNext(i + 1);
+        
+
+    }, 2000);
+}
+writeNext(-2);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Affichages du driver standing
