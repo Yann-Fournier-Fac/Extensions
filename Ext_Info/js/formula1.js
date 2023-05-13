@@ -76,6 +76,8 @@ var constructeurs = {
 
 var Mois = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Sept", "Oct", "Nov", "Déc"];
 
+var Points = ["25", "18", "15", "12", "10", "8", "6", "4", "2", "1"];
+
 function displayRaces() {
     buRaces.style = "background-color: rgba(255,255,255,0); border-style: solid;border-color:rgb(255, 86, 86);";
     buDrivers.style = "background-color: rgb(255, 86, 86);";
@@ -317,52 +319,81 @@ fetch(urlNextGP)
 }).then((json) => NextGP(json));
 
 function podium(json) {
-    try {
-        console.log(json.MRData.RaceTable.Races[0].raceName)
-    } catch (r) {}
-    
     if (json.MRData.RaceTable.Races.length !== 0) {
         var circuit = document.getElementById(json.MRData.RaceTable.Races[0].raceName + "B");
         circuit.innerHTML = "";
         circuit.Name = "divisionPastRecesBack"
        
-    var results = document.createElement('div');
-        results.style = "display: flex; flex-direction: column; width: 200px;height: 100%;";
+        var results = document.createElement('div');
+        results.style = "display: flex; flex-direction: column; width: 200px;height: 100%;margin-left:40px;padding:2px;";
+
+        var premier = document.createElement('div');
+        premier.style = "display: flex; flex-direction: row;";
+        var premierPlace = document.createElement('img');
+        premierPlace.src = "../images/Formula1/or.png";
+        premierPlace.className = "trophee";
+        var premierDriv = document.createElement('p');
+        premierDriv.innerHTML = json.MRData.RaceTable.Races[0].Results[0].Driver.familyName;
+        premierDriv.style = "display: inline;font-size:25px;font-family: 'Dongle', sans-serif; margin:0px;padding-left:10px;";
+        premier.appendChild(premierPlace);
+        premier.appendChild(premierDriv);
+
+        var deuxieme = document.createElement('div');
+        deuxieme.style = "display: flex; flex-direction: row;";
+        var deuxiemePlace = document.createElement('img');
+        deuxiemePlace.src = "../images/Formula1/argent.png";
+        deuxiemePlace.className = "trophee";
+        var deuxiemeDriv = document.createElement('p');
+        deuxiemeDriv.innerHTML = json.MRData.RaceTable.Races[0].Results[1].Driver.familyName;
+        deuxiemeDriv.style = "display: inline;font-size:25px;font-family: 'Dongle', sans-serif;margin:0px;padding-left:10px;";
+        deuxieme.appendChild(deuxiemePlace);
+        deuxieme.appendChild(deuxiemeDriv);
+
+        var troisieme = document.createElement('div');
+        troisieme.style = "display: flex; flex-direction: row;";
+        var troisiemePlace = document.createElement('img');
+        troisiemePlace.src = "../images/Formula1/bronze.png";
+        troisiemePlace.className = "trophee";
+        var troisiemeDriv = document.createElement('p');
+        troisiemeDriv.innerHTML = json.MRData.RaceTable.Races[0].Results[2].Driver.familyName;
+        troisiemeDriv.style = "display: inline;font-size:25px;font-family: 'Dongle', sans-serif;margin:0px;padding-left:10px;";
+        troisieme.appendChild(troisiemePlace);
+        troisieme.appendChild(troisiemeDriv);
+
+        results.appendChild(premier);
+        results.appendChild(deuxieme);
+        results.appendChild(troisieme);
         
-
-        
-
-        try {
-            var driv = document.createElement('div')
-            driv.style = "display: flex; flex-direction: row; justify-content: space-between;";
-            var premier = document.createElement('p');
-            premier.innerHTML = "Premier";
-            premier.style = "display: inline;font-size:20px;font-family: 'Dongle', sans-serif; margin:0px;";
-            var deuxieme = document.createElement('p');
-            deuxieme.innerHTML = "Deuxième";
-            deuxieme.style = "display: inline;font-size:20px;font-family: 'Dongle', sans-serif;margin:0px;";
-            var troisieme = document.createElement('p');
-            troisieme.innerHTML = "Troisième";
-            troisieme.style = "display: inline;font-size:20px;font-family: 'Dongle', sans-serif;margin:0px;";
-        } catch (e) {
-            console.log("3");
-        }
-
-        var podium = document.createElement('img');
-        podium.src = "../images/Formula1/podium.png";
-        podium.style = "width:50px; heigth: 30px;";
-
-        try {
-            driv.appendChild(deuxieme);
-            driv.appendChild(premier);
-            driv.appendChild(troisieme);
-            results.appendChild(driv);
-            results.appendChild(podium);
-        } catch (r) {
-            console.log("5");
-        }
         var fastestLap = document.createElement('div');
+        fastestLap.style = "display:flex; flex-direction:column; margin-right: 10px;";
+        var fastestTitre = document.createElement('p');
+        fastestTitre.innerHTML = "Fastest Lap";
+        fastestTitre.style = "display: inline;font-size:30px;font-family: 'Dongle', sans-serif;margin:0px;";
+        var fastestDriv = document.createElement('p');
+        fastestDriv.style = "display: inline;font-size:20px;font-family: 'Dongle', sans-serif;margin:0px;";
+        var fastestTime = document.createElement('p');
+        fastestTime.style = "display: inline;font-size:20px;font-family: 'Dongle', sans-serif;margin:0px;";
+
+        for (let i= 0; i < 10; i++) {
+            if (json.MRData.RaceTable.Races[0].Results[i].points !== Points[i]) {
+                fastestDriv.innerHTML = json.MRData.RaceTable.Races[0].Results[i].Driver.familyName;
+                fastestTime.innerHTML = json.MRData.RaceTable.Races[0].Results[2].FastestLap.Time.time;
+            }
+        }
+
+        for (let i= 10; i < 20; i++) {
+            if (json.MRData.RaceTable.Races[0].Results[i].points !== "0") {
+                fastestDriv.innerHTML = json.MRData.RaceTable.Races[0].Results[i].Driver.familyName;
+                fastestTime.innerHTML = json.MRData.RaceTable.Races[0].Results[2].FastestLap.Time.time;
+            }
+        }
+
+        fastestLap.appendChild(fastestTitre);
+        fastestLap.appendChild(fastestDriv);
+        fastestLap.appendChild(fastestTime);
+
         circuit.appendChild(results);
+        circuit.appendChild(fastestLap)
     } 
 }
 
@@ -393,41 +424,6 @@ function writeNext(i)
     }, 2000);
 }
 writeNext(-2);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Affichages du driver standing
 function Drivers(json) {

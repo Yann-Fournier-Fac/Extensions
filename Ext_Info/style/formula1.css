@@ -191,7 +191,6 @@
 .divisionPastRacesBack {
     display: flex; 
     flex-direction: row; 
-    /* justify-content: space-between;     */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); 
     border-radius: 10px;
     width: 400px;
@@ -202,4 +201,11 @@
     font-size:80px; 
     background-color: rgba(255, 86, 86, 0.5);
     transform: rotateY(180deg);
+}
+
+
+
+.trophee {
+    width: 30px;
+    height: 30px;
 }
