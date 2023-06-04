@@ -1,3 +1,12 @@
+// You must not create any application which polls the API more than four times per second or more than 200 times per hour. 
+// Applications and users exceeding these rates are likely to be blocked. 
+// Caching is permitted and encouraged.
+
+
+// const fs = require('fs')
+// const pilotes = JSON.parse(fs.readFileSync('../json/formula1.json', 'utf-8'));
+// console.log(pilotes);
+
 var divFormula1 = document.getElementById('divFormula1');
 
 var year = document.getElementById('year');
@@ -423,7 +432,7 @@ function writeNext(i)
 
     }, 2000);
 }
-writeNext(-2);
+writeNext(-3);
 
 // Affichages du driver standing
 function Drivers(json) {
