@@ -72,7 +72,7 @@ var Streamer =  {
     "Ninou": "https://static-cdn.jtvnw.net/jtv_user_pictures/0884db5e-c50e-4656-809a-034e42c01bd3-profile_image-300x300.png",
     "Vatira_": "https://static-cdn.jtvnw.net/jtv_user_pictures/b1288865-884c-40e9-ac88-0c34656580a4-profile_image-300x300.png",
     "Etoiles": "https://static-cdn.jtvnw.net/jtv_user_pictures/4eecaab8-4de3-4bcc-b2b7-f3a03e8273a8-profile_image-300x300.png",
-    "Mawkzy_": "https://static-cdn.jtvnw.net/jtv_user_pictures/6caeccff-e661-4ccb-838f-a6426ac7e3a5-profile_image-300x300.png",
+    "Mawkzy_": "https://static-cdn.jtvnw.net/jtv_user_pictures/8c1eb7fe-1a42-491e-99a1-7779569aec54-profile_image-70x70.png",
     "Kaydop": "https://static-cdn.jtvnw.net/jtv_user_pictures/047f3327-ef6d-4e0d-bd65-38a0586b195c-profile_image-300x300.png",
     "GaspowRL": "https://static-cdn.jtvnw.net/jtv_user_pictures/8877e8f2-fccf-4ccf-8b28-e2c353c1eb76-profile_image-300x300.png",
     "Akytio": "https://static-cdn.jtvnw.net/jtv_user_pictures/eeb41690-189a-40fe-a1b2-ebccf3795c21-profile_image-300x300.png",
@@ -328,12 +328,10 @@ fetch('../json/stream.json')
 //     renderStream();
 // }
 
-// //Stream();
-// // appel afficheStream() toutes les minutes
-// // const when = 1545696000;
-// // const periodInMinutes= 1;
-// // chrome.alarms.create("Stream",{
-// //     when, 
-// //     periodInMinutes
-// // });
-// // chrome.alarms.onAlarm.addListener(() => {Stream();});
+// Stream();
+// appel afficheStream() toutes les minutes
+// const when = 1545696000;
+// const periodInMinutes = 2;
+
+// chrome.alarms.create({ periodInMinutes: 1});
+// chrome.alarms.onAlarm.addListener(() => {console.log("Alarm Works !!!!!!!");});

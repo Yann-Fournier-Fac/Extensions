@@ -3,7 +3,11 @@
 // Caching is permitted and encouraged.
 
 
-// const fs = require('fs')
+// import * as fs from 'node:fs/promises';
+// import readFileSync from 'fs';
+// import * as fs from "../node_modules/fs.realpath/index.js";
+// import { readFileSync } from 'fs';
+// const fs = require('fs');
 // const pilotes = JSON.parse(fs.readFileSync('../json/formula1.json', 'utf-8'));
 // console.log(pilotes);
 
@@ -529,6 +533,6 @@ fetch(urlConstructors)
 }).then((json) => Constructors(json));
 
 
-
-
+const testLocalStorage = JSON.parse(localStorage.getItem("testLocalStorage"))
+console.log(testLocalStorage)
 
