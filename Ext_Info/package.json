@@ -5,6 +5,7 @@
     "csv-parse": "^5.0.4",
     "csv-parser": "^3.0.0",
     "csv-writer": "^1.6.0",
-    "require-directory": "^2.1.1"
+    "require-directory": "^2.1.1",
+    "browserify": "^17.0.0"
   }
 }
