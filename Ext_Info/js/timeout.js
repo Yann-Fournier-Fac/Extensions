@@ -1,6 +1,8 @@
 let minutes = 1;
 let heures = 1;
 let secondes = 0;
+localStorage.setItem('minutes', minutes)
+localStorage.setItem('heures', heures)
 
 var minute = setInterval(function () {
     console.log("Ca fait : " + minutes + " minutes");
@@ -52,5 +54,6 @@ f1();
 currentdate = new Date();
 var oneJan = new Date(currentdate.getFullYear(),0,1);
 var numberOfDays = Math.floor((currentdate - oneJan) / (24 * 60 * 60 * 1000));
-var result = Math.ceil(( currentdate.getDay() + 1 + numberOfDays) / 7);
-console.log(`The week number of the current date is ${result}.`);
+var weekNBR = Math.ceil(( currentdate.getDay() + 1 + numberOfDays) / 7);
+localStorage.setItem('week', weekNBR)
+console.log(`The week number of the current date is ${weekNBR}.`);
