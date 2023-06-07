@@ -2,15 +2,6 @@
 // Applications and users exceeding these rates are likely to be blocked. 
 // Caching is permitted and encouraged.
 
-
-// import * as fs from 'node:fs/promises';
-// import readFileSync from 'fs';
-// import * as fs from "../node_modules/fs.realpath/index.js";
-// import { readFileSync } from 'fs';
-// const fs = require('fs');
-// const pilotes = JSON.parse(fs.readFileSync('../json/formula1.json', 'utf-8'));
-// console.log(pilotes);
-
 var divFormula1 = document.getElementById('divFormula1');
 
 var year = document.getElementById('year');
@@ -42,10 +33,7 @@ buConstructors.addEventListener('click', function() {
 
 
 // Formula 1 ************************************************************************************************************************************************************
-var urlRaces = "http://ergast.com/api/f1/current.json";
-var urlDrivers = "http://ergast.com/api/f1/current/driverStandings.json";
-var urlConstructors = "http://ergast.com/api/f1/current/constructorStandings.json";
-var urlNextGP = "http://ergast.com/api/f1/current/next.json";
+
 
 var pilots = {
     "Albon": "../images/Formula1/Drivers/albon.png",
@@ -149,15 +137,123 @@ function displayDivFormula1() {
     //icon.style = "width:30px; height:30px;"
 }
 
-// var date = new Date();
-// console.log(date);
-// console.log(date.getDate()); // jour du mois
-// console.log(date.getMonth()); // mois
+
+// Get Data $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+currentdate = new Date();
+var oneJan = new Date(currentdate.getFullYear(),0,1);
+var numberOfDays = Math.floor((currentdate - oneJan) / (24 * 60 * 60 * 1000));
+var weekNBR = Math.ceil(( currentdate.getDay() + 1 + numberOfDays) / 7);
+// localStorage.setItem('Week Of The Year', 22);
+
+var urlRaces = "http://ergast.com/api/f1/current.json";
+var urlDrivers = "http://ergast.com/api/f1/current/driverStandings.json";
+var urlConstructors = "http://ergast.com/api/f1/current/constructorStandings.json";
+var urlNextGP = "http://ergast.com/api/f1/current/next.json";
+
+let week = localStorage.getItem('Week Of The Year');
+
+// 
+if ((weekNBR > week) && ((currentdate.getDay() == 1 && currentdate.getHours() >= 12) || (currentdate.getDay() > 1))) {
+    // fetching what I need and put it in LocalStorage ***************************************************************    
+    fetch(urlRaces)
+    .then((response) =>  {
+        return response.json();
+    }).then((json) => {
+        localStorage.setItem('Races Front', JSON.stringify(json));
+    });
+
+    fetch(urlNextGP)
+    .then((response) =>  {
+        return response.json();
+    }).then((json) => {
+        localStorage.setItem('Next GP', JSON.stringify(json));
+    });
+
+    writeNext(0);
+
+    fetch(urlDrivers)
+    .then((response) =>  {
+        return response.json();
+    }).then((json) => {
+        localStorage.setItem('Drivers', JSON.stringify(json));
+    });
+
+    fetch(urlConstructors)
+    .then((response) =>  {
+        return response.json();
+    }).then((json) => {
+        localStorage.setItem('Constructors', JSON.stringify(json));
+    });
+
+    getAllPodium();
+
+    localStorage.setItem('Week Of The Year', weekNBR);
+    console.log("Les data sont en train d'etre récupérer")
+
+    var racesFront = JSON.parse(localStorage.getItem('Races Front'))
+    var conducteur = JSON.parse(localStorage.getItem('Drivers'))
+    var constructeur = JSON.parse(localStorage.getItem('Constructors'))
+    var prochainGP = JSON.parse(localStorage.getItem('Next GP'))
+    // console.log(racesFront)
+    // console.log(conducteur)
+    // console.log(constructeur)
+    // console.log(prochainGP)
+    RacesFront(racesFront)
+    Drivers(conducteur);
+    Constructors(constructeur)
+    NextGP(prochainGP)
+    for (let i = 1; i <= 23; i++) {
+        var podium = JSON.parse(localStorage.getItem('podium' + i));
+        Podium(podium);
+    }
+} else {
+    console.log("data déjà récupérer")
+    var racesFront = JSON.parse(localStorage.getItem('Races Front'))
+    var conducteur = JSON.parse(localStorage.getItem('Drivers'))
+    var constructeur = JSON.parse(localStorage.getItem('Constructors'))
+    var prochainGP = JSON.parse(localStorage.getItem('Next GP'))
+    // console.log(racesFront)
+    // console.log(conducteur)
+    // console.log(constructeur)
+    // console.log(prochainGP)
+    RacesFront(racesFront)
+    Drivers(conducteur);
+    Constructors(constructeur)
+    NextGP(prochainGP)
+    for (let i = 1; i <= 23; i++) {
+        var podium = JSON.parse(localStorage.getItem('podium' + i));
+        Podium(podium);
+    }
+}
 
 
-// transform: rotateY(180deg);
-// https://www.w3schools.com/howto/howto_css_flip_card.asp
+function writeNext(i){
+    if(i == 2)
+        return;
+    setTimeout(function() {
+        // console.log(i)
+        writeNext(i + 1);
+    }, 1000);
+}
 
+async function getPodium(nbr) {
+    fetch("http://ergast.com/api/f1/current/" + nbr + "/results.json")
+    .then((response) =>  {
+        return response.json();
+    }).then((json) => {
+        localStorage.setItem('podium' + nbr, JSON.stringify(json));
+    });
+}
+
+async function getAllPodium() {
+    for (let i = 1; i <= 23; i++) {
+        await getPodium(i)
+    }
+}
+
+
+
+// Affichage Data $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 function numDateToString(date) {
     if (date[8] == "0") {
         var jour = date[9];
@@ -175,6 +271,9 @@ function numDateToString(date) {
 function hourToHour(heure) {
     return (parseInt(heure[0] + heure[1]) + 2) + heure[2] + heure[3] + heure[4]
 }
+
+// transform: rotateY(180deg);
+// https://www.w3schools.com/howto/howto_css_flip_card.asp
 
 // front des cartes des courses
 function RacesFront(json) {
@@ -311,10 +410,7 @@ function RacesFront(json) {
     });
 }
 
-fetch(urlRaces)
-.then((response) =>  {
-    return response.json();
-}).then((json) => RacesFront(json));
+
 
 // Front de la carte de la prochaine Course
 function NextGP(json) {
@@ -326,12 +422,9 @@ function NextGP(json) {
     //console.log(next)
     nextBack.className = "divisionNextRacesBack";
 }
-fetch(urlNextGP)
-.then((response) =>  {
-    return response.json();
-}).then((json) => NextGP(json));
 
-function podium(json) {
+
+function Podium(json) {
     if (json.MRData.RaceTable.Races.length !== 0) {
         var circuit = document.getElementById(json.MRData.RaceTable.Races[0].raceName + "B");
         circuit.innerHTML = "";
@@ -346,7 +439,7 @@ function podium(json) {
         premierPlace.src = "../images/Formula1/or.png";
         premierPlace.className = "trophee";
         var premierDriv = document.createElement('p');
-        premierDriv.innerHTML = json.MRData.RaceTable.Races[0].Results[0].Driver.familyName;
+        premierDriv.innerHTML = json.MRData.RaceTable.Races[0].Results[0].Driver.familyName + " (+" + json.MRData.RaceTable.Races[0].Results[0].points + " pts)";
         premierDriv.style = "display: inline;font-size:25px;font-family: 'Dongle', sans-serif; margin:0px;padding-left:10px;";
         premier.appendChild(premierPlace);
         premier.appendChild(premierDriv);
@@ -357,7 +450,7 @@ function podium(json) {
         deuxiemePlace.src = "../images/Formula1/argent.png";
         deuxiemePlace.className = "trophee";
         var deuxiemeDriv = document.createElement('p');
-        deuxiemeDriv.innerHTML = json.MRData.RaceTable.Races[0].Results[1].Driver.familyName;
+        deuxiemeDriv.innerHTML = json.MRData.RaceTable.Races[0].Results[1].Driver.familyName + " (+" + json.MRData.RaceTable.Races[0].Results[1].points + " pts)";
         deuxiemeDriv.style = "display: inline;font-size:25px;font-family: 'Dongle', sans-serif;margin:0px;padding-left:10px;";
         deuxieme.appendChild(deuxiemePlace);
         deuxieme.appendChild(deuxiemeDriv);
@@ -368,7 +461,7 @@ function podium(json) {
         troisiemePlace.src = "../images/Formula1/bronze.png";
         troisiemePlace.className = "trophee";
         var troisiemeDriv = document.createElement('p');
-        troisiemeDriv.innerHTML = json.MRData.RaceTable.Races[0].Results[2].Driver.familyName;
+        troisiemeDriv.innerHTML = json.MRData.RaceTable.Races[0].Results[2].Driver.familyName + " (+" + json.MRData.RaceTable.Races[0].Results[2].points + " pts)";
         troisiemeDriv.style = "display: inline;font-size:25px;font-family: 'Dongle', sans-serif;margin:0px;padding-left:10px;";
         troisieme.appendChild(troisiemePlace);
         troisieme.appendChild(troisiemeDriv);
@@ -410,33 +503,7 @@ function podium(json) {
     } 
 }
 
-function writeNext(i)
-{
-    if(i == 8)
-        return;
 
-    setTimeout(function()
-    {
-        if (i >= 0) {
-            fetch("http://ergast.com/api/f1/current/" + (i*3+1) + "/results.json")
-            .then((response) =>  {
-                return response.json();
-            }).then((json) => podium(json));
-            fetch("http://ergast.com/api/f1/current/" + (i*3+2) + "/results.json")
-            .then((response) =>  {
-                return response.json();
-            }).then((json) => podium(json));
-            fetch("http://ergast.com/api/f1/current/" + (i*3+3) + "/results.json")
-            .then((response) =>  {
-                return response.json();
-            }).then((json) => podium(json));
-        }
-        writeNext(i + 1);
-        
-
-    }, 2000);
-}
-writeNext(-3);
 
 // Affichages du driver standing
 function Drivers(json) {
@@ -481,10 +548,7 @@ function Drivers(json) {
     drivers.appendChild(para);
 }
 
-fetch(urlDrivers)
-.then((response) =>  {
-    return response.json();
-}).then((json) => Drivers(json));
+
 
 // affichage du constructors standing
 function Constructors(json) {
@@ -527,12 +591,4 @@ function Constructors(json) {
     
 }
 
-fetch(urlConstructors)
-.then((response) =>  {
-    return response.json();
-}).then((json) => Constructors(json));
-
-
-const testLocalStorage = JSON.parse(localStorage.getItem("testLocalStorage"))
-console.log(testLocalStorage)
 
